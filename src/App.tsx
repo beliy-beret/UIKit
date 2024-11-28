@@ -14,18 +14,19 @@ function App() {
         <CheckBox checked readOnly />
       </div>
       <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
-        <TextArea>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
+        <TextArea
+          error
+          defaultValue="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
           asperiores autem consequatur dolor enim excepturi harum maiores
           necessitatibus nemo obcaecati perspiciatis placeat quam sed vero
-          voluptate. Aperiam eum quia sapiente.
-        </TextArea>
-        <TextArea error>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
+          voluptate. Aperiam eum quia sapiente."
+        ></TextArea>
+        <TextArea
+          defaultValue="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
           asperiores autem consequatur dolor enim excepturi harum maiores
           necessitatibus nemo obcaecati perspiciatis placeat quam sed vero
-          voluptate. Aperiam eum quia sapiente.
-        </TextArea>
+          voluptate. Aperiam eum quia sapiente."
+        ></TextArea>
       </div>
     </div>
   );
