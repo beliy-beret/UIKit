@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../colors";
 
 type Props = {
   $isChecked?: boolean;
@@ -24,34 +25,40 @@ export const CheckBox = styled.label<Props>`
   ${({ $isChecked, $isDisabled }) => {
     if ($isDisabled) {
       return `
-        background-color: #E2E2EB;
-        border-color: #C2C0D1;
+        background-color: ${Colors.blueGray["50"]};
+        border-color: ${Colors.blueGray["200"]};
       `;
     }
     if ($isChecked) {
       return `
-        background-color: #F7FAFF;
-        border-color: #1B4DCB;
+        background-color: ${Colors.blue["10"]};
+        border-color: ${Colors.blue["400"]};
       `;
     }
 
     if ($isChecked && $isDisabled) {
       return `
-        background-color: #E2E2EB;
-        border-color: #C2C0D1;
+        background-color: ${Colors.blueGray["50"]};
+        border-color: ${Colors.blueGray["200"]};
       `;
     }
 
     return `
-      background-color: #f1f0f5;
-      border-color: #b0afc2;    
+      background-color: ${Colors.blueGray["25"]};
+      border-color: ${Colors.blueGray["300"]};    
     `;
   }};
 
+  &:focus-visible {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0 3px ${Colors.blue["200"]};
+  }
+
   @media (hover: hover) {
     &:hover {
-      background-color: #f7faff;
-      border-color: #193c94;
+      background-color: ${Colors.blue["10"]};
+      border-color: ${Colors.blue["500"]};
     }
   }
 `;

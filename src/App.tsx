@@ -1,4 +1,4 @@
-import { Button } from "../lib/main.ts";
+import { Button, CheckBox } from "../lib/main.ts";
 
 function App() {
   return (
@@ -8,6 +8,10 @@ function App() {
         <Button variant="blueSecondary">My button</Button>
         <Button variant="blueOutline">My button</Button>
         <Button variant="blueLink">My button</Button>
+      </div>
+      <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
+        <CheckBox />
+        <CheckBox checked />
       </div>
     </div>
   );

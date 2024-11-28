@@ -3,11 +3,28 @@ import * as S from "./style";
 
 type Props = Pick<
   ComponentProps<"input">,
-  "id" | "className" | "checked" | "disabled" | "onChange" | "readOnly"
+  | "id"
+  | "className"
+  | "checked"
+  | "disabled"
+  | "onChange"
+  | "readOnly"
+  | "tabIndex"
 >;
 
 export const CheckBox = forwardRef<HTMLInputElement, Props>(
-  ({ checked, disabled, onChange, className, id, readOnly }: Props, ref) => {
+  (
+    {
+      checked,
+      disabled,
+      onChange,
+      className,
+      id,
+      readOnly,
+      tabIndex = 0,
+    }: Props,
+    ref,
+  ) => {
     return (
       <S.Wrapper>
         <input
@@ -23,6 +40,7 @@ export const CheckBox = forwardRef<HTMLInputElement, Props>(
           className={className}
           $isChecked={checked}
           $isDisabled={disabled}
+          tabIndex={tabIndex}
         >
           {checked && (
             <svg
