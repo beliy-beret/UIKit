@@ -1,6 +1,10 @@
 import { ButtonHTMLAttributes } from "react";
-import style from "./style.module.css";
 
 export const Button = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
-  return <button className={style.button} {...props} />;
+  return (
+    <button
+      style={{ padding: "12px 24px", backgroundColor: "red" }}
+      {...props}
+    />
+  );
 };
