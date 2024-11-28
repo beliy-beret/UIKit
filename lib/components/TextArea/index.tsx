@@ -2,19 +2,14 @@ import { forwardRef, type TextareaHTMLAttributes } from "react";
 import * as S from "./style";
 
 type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & {
-  errorMessage?: string;
+  error?: boolean;
 };
 
 export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
-  ({ errorMessage, ...props }, ref) => {
+  ({ error, tabIndex = 0, ...props }, ref) => {
     return (
-      <S.Wrapper>
-        <S.TextArea {...props} ref={ref} $error={!!errorMessage} />
-        {errorMessage && (
-          <S.ErrorMessage className="error-message">
-            {errorMessage}
-          </S.ErrorMessage>
-        )}
+      <S.Wrapper $error={error}>
+        <S.TextArea {...props} tabIndex={tabIndex} $error={error} ref={ref} />
       </S.Wrapper>
     );
   },

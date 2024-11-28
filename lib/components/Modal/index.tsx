@@ -4,16 +4,20 @@ import * as S from "./style";
 
 type Props = {
   children?: ReactNode;
-  onClose: () => void;
+  onClose?: () => void;
   style?: CSSProperties;
   wrapperStyle?: CSSProperties;
 };
 
 export const Modal = ({ children, onClose, style, wrapperStyle }: Props) => {
+  const portal = document.createElement("div");
+  portal.setAttribute("id", "modal");
+  document.body.appendChild(portal);
+
   const modalRoot = document.getElementById("modal");
 
   const handleBackdropClick = (e: MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
+    if (onClose && e.target === e.currentTarget) {
       onClose();
     }
   };

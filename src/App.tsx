@@ -1,4 +1,4 @@
-import { Button, CheckBox } from "../lib/main.ts";
+import { Button, CheckBox, TextArea } from "../lib/main.ts";
 
 function App() {
   return (
@@ -10,8 +10,22 @@ function App() {
         <Button variant="blueLink">My button</Button>
       </div>
       <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
-        <CheckBox />
-        <CheckBox checked />
+        <CheckBox readOnly />
+        <CheckBox checked readOnly />
+      </div>
+      <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
+        <TextArea>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
+          asperiores autem consequatur dolor enim excepturi harum maiores
+          necessitatibus nemo obcaecati perspiciatis placeat quam sed vero
+          voluptate. Aperiam eum quia sapiente.
+        </TextArea>
+        <TextArea error>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
+          asperiores autem consequatur dolor enim excepturi harum maiores
+          necessitatibus nemo obcaecati perspiciatis placeat quam sed vero
+          voluptate. Aperiam eum quia sapiente.
+        </TextArea>
       </div>
     </div>
   );

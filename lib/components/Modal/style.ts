@@ -9,5 +9,5 @@ export const Modal = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 101;
+  z-index: 1000;
 `;

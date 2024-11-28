@@ -1,30 +1,51 @@
 import styled from "styled-components";
-import { Colors } from "theme";
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import { Colors } from "../../../colors";
 
 type TextAreaProps = {
   $error?: boolean;
 };
 
+export const Wrapper = styled.div<TextAreaProps>`
+  display: grid;
+  align-items: stretch;
+  justify-content: stretch;
+  border: 1px solid ${Colors.blueGray["300"]};
+  border-radius: 8px;
+  overflow: hidden;
+  ${({ $error }) => $error && `border-color: ${Colors.red["400"]}`};
+
+  &:focus-within {
+    border-color: ${Colors.blue["400"]};
+    ${({ $error }) => $error && `border-color: ${Colors.red["400"]}`};
+  }
+`;
+
 export const TextArea = styled.textarea<TextAreaProps>`
-  border: 1px solid #b0afc2;
-  width: 100%;
   padding: 6px 14px;
-  border-radius: 6px;
   background-color: ${Colors.white};
   color: ${Colors.blueGray["600"]};
   font-size: 14px;
   line-height: 19px;
   resize: none;
-  ${({ $error }) => $error && `border: 1px solid ${Colors.red["400"]}`};
+  border: none;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${Colors.blueGray["50"]};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: ${Colors.blueGray["300"]};
+  }
 
   &:focus {
     outline: none;
-    box-shadow: inset 0 0 0 1px #193c94;
   }
 `;
 
