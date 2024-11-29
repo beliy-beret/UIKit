@@ -4,9 +4,9 @@ import {
   SelectWithSearch,
   TextArea,
   Select,
+  Avatar,
 } from "./components";
 import "./style.css";
-import { Avatar } from "./components/Avatar";
 import ava from "./assets/pikachu.png";
 import { Option } from "./components/Select/types.ts";
 import { useMemo, useState } from "react";
