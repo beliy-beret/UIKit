@@ -1,4 +1,4 @@
-import { Button } from "../lib/main.ts";
+import { Button } from "./components";
 
 function App() {
   return (
