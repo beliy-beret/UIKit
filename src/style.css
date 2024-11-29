@@ -1,0 +1,16 @@
+.block {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.textarea {
+  textarea {
+    min-width: 40vw;
+  }
+}
+
+.avatars {
+  align-items: flex-start;
+  justify-content: start;
+}
