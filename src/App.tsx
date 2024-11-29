@@ -1,9 +1,38 @@
-import { Button, CheckBox, TextArea } from "./components";
+import {
+  Button,
+  CheckBox,
+  SelectWithSearch,
+  TextArea,
+  Select,
+} from "./components";
 import "./style.css";
 import { Avatar } from "./components/Avatar";
 import ava from "./assets/pikachu.png";
+import { Option } from "./components/Select/types.ts";
+import { useMemo, useState } from "react";
+
+const options: Option[] = [
+  { value: "0", label: "Все" },
+  { value: "1", label: "Яблоко" },
+  { value: "2", label: "Груша" },
+  { value: "3", label: "Вишня" },
+  { value: "4", label: "Черешня" },
+  { value: "5", label: "арбуз" },
+  { value: "6", label: "дыня" },
+  { value: "7", label: "апельсин" },
+];
 
 function App() {
+  const [search, setSearch] = useState("");
+  const [selectWithSearchValue, setSelectWithSearchValue] = useState("");
+
+  const filteredOptions = useMemo(() => {
+    if (!search) return options;
+    return options.filter((option) => option.label.includes(search));
+  }, [search]);
+
+  const [defaultSelectValue, setDefaultSeletValue] = useState(options[0].value);
+
   return (
     <section>
       <div className="block">
@@ -32,6 +61,31 @@ function App() {
         <Avatar variant="Small" userInitials="KS" imgSrc={ava} />
         <Avatar userInitials="KS" imgSrc={ava} />
         <Avatar variant="Large" userInitials="KS" imgSrc={ava} />
+      </div>
+      <div className="block">
+        <SelectWithSearch
+          options={filteredOptions}
+          value={search}
+          selectedValue={selectWithSearchValue}
+          onSelect={(value) => setSelectWithSearchValue(value)}
+          onChange={(search) => setSearch(search)}
+          onReset={() => {
+            setSearch("");
+            setSelectWithSearchValue("");
+          }}
+        />
+
+        <Select
+          options={options}
+          selectedValue={defaultSelectValue}
+          onSelect={(value) => setDefaultSeletValue(value)}
+        />
+        <Select
+          error
+          options={options}
+          selectedValue={defaultSelectValue}
+          onSelect={(value) => setDefaultSeletValue(value)}
+        />
       </div>
     </section>
   );

@@ -48,8 +48,3 @@ export const TextArea = styled.textarea<TextAreaProps>`
     outline: none;
   }
 `;
-
-export const ErrorMessage = styled.p`
-  font-size: 10px;
-  color: ${Colors.red["400"]};
-`;
