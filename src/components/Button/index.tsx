@@ -1,11 +1,19 @@
 import { type ButtonHTMLAttributes } from "react";
+import * as S from "./style";
+import { ButtonVariant } from "./types.ts";
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement>;
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: ButtonVariant;
+};
 
-export const Button = ({ children, ...props }: Props) => {
+export const Button = ({
+  children,
+  variant = "bluePrimary",
+  ...props
+}: Props) => {
   return (
-    <button style={{ backgroundColor: "red" }} {...props}>
+    <S.Button $variant={variant} {...props}>
       {children}
-    </button>
+    </S.Button>
   );
 };
