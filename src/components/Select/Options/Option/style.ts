@@ -20,7 +20,13 @@ export const Option = styled.div<Props>`
     color: #1b4dcb;;
   `};
 
-  &[aria-selected="true"] {
+  &[aria-disabled="true"] {
+    background-color: transparent;
+    color: ${Colors.blue["300"]} !important;
+    pointer-events: none;
+  }
+
+  &[aria-selected="true"]:not(&[aria-disabled="true"]) {
     color: ${Colors.blue["600"]};
     background-color: ${Colors.blueGray["25"]};
   }

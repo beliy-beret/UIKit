@@ -5,6 +5,7 @@ import {
   TextArea,
   Select,
   Avatar,
+  MultipleSelect,
 } from "./components";
 import "./style.css";
 import ava from "./assets/pikachu.png";
@@ -25,13 +26,23 @@ const options: Option[] = [
 function App() {
   const [search, setSearch] = useState("");
   const [selectWithSearchValue, setSelectWithSearchValue] = useState("");
-
   const filteredOptions = useMemo(() => {
     if (!search) return options;
     return options.filter((option) => option.label.includes(search));
   }, [search]);
 
   const [defaultSelectValue, setDefaultSeletValue] = useState(options[0].value);
+
+  const [multipleSelectValues, setMultipleSelectValues] = useState<string[]>([
+    options[0].value,
+  ]);
+  const disabledValues = useMemo<string[]>(() => {
+    if (multipleSelectValues.length < 2) {
+      return [multipleSelectValues[0]];
+    }
+
+    return [];
+  }, [multipleSelectValues]);
 
   return (
     <section>
@@ -80,11 +91,12 @@ function App() {
           selectedValue={defaultSelectValue}
           onSelect={(value) => setDefaultSeletValue(value)}
         />
-        <Select
-          error
+
+        <MultipleSelect
           options={options}
-          selectedValue={defaultSelectValue}
-          onSelect={(value) => setDefaultSeletValue(value)}
+          disabledValues={disabledValues}
+          selectedValues={multipleSelectValues}
+          onSelect={setMultipleSelectValues}
         />
       </div>
     </section>
