@@ -15,7 +15,7 @@ export const CustomSelect = styled.div<Props>`
     background-color: ${Colors.gray["10"]};
     border-radius: 4px;
     width: 100%;
-    padding: 8px 16px;
+    padding: 8px 38px 8px 16px;
     color: #1d1c29;
     border: 1px solid transparent;
     font-size: 14px;
@@ -35,10 +35,10 @@ export const CustomSelect = styled.div<Props>`
     place-items: center;
     transition: rotate 200ms ease-in-out;
     top: 50%;
-    right: 16px;
+    right: 0;
     translate: 0 -50%;
-    pointer-events: none;
     cursor: pointer;
+    padding: 8px 16px;
 
     svg {
       margin-left: auto;

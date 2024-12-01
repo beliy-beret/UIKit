@@ -1,2 +1,2 @@
-export { OptionsWrapper } from "./Wrapper";
 export { Option } from "./Option";
+export { OptionsBox } from "./OptionsBox";

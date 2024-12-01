@@ -8,8 +8,7 @@ import {
 } from "react";
 import * as S from "./style";
 import { type Option as OptionType } from "../types.ts";
-import { Option } from "../Options";
-import { OptionsBox } from "../Options/OptionsBox";
+import { Option, OptionsBox } from "../Options";
 import { Input } from "../../Input";
 
 type Props<T extends OptionType> = {
@@ -22,6 +21,7 @@ type Props<T extends OptionType> = {
   onSelect: (optionValue: T["value"]) => void;
   onChange: (value: string) => void;
   onReset?: () => void;
+  onFocus?: () => void;
 };
 
 export const SelectWithSearch = <T extends OptionType>({
@@ -34,11 +34,14 @@ export const SelectWithSearch = <T extends OptionType>({
   renderOption,
   onSelect,
   onChange,
+  onFocus,
 }: Props<T>) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const optionsRef = useRef<HTMLDialogElement>(null);
+  const selectRef = useRef<HTMLDivElement>(null);
+
   const scrollToActive = () => {
     const container = optionsRef.current;
     const activeElement: HTMLElement | null =
@@ -101,10 +104,40 @@ export const SelectWithSearch = <T extends OptionType>({
 
   const handleFocus = () => {
     setShowDropdown(true);
+    if (onFocus) {
+      onFocus();
+    }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+
+    const handleFocus = (event: FocusEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("focusin", handleFocus);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("focusin", handleFocus);
+    };
+  }, []);
+
   return (
-    <S.Wrapper>
+    <S.Wrapper ref={selectRef}>
       {onReset && (
         <span className="reset-button" onClick={handleReset}>
           &#10005;
@@ -118,15 +151,14 @@ export const SelectWithSearch = <T extends OptionType>({
         value={value}
         autoComplete="off"
         onChange={handleSearch}
-        onFocus={handleFocus}
         onKeyDown={handleKeyDown}
-        onBlur={() => setShowDropdown(false)}
+        onFocus={handleFocus}
         aria-controls="dropdown-list"
         aria-expanded={showDropdown}
       />
 
       <OptionsBox
-        open={true}
+        open={showDropdown}
         isOpen={showDropdown}
         ref={optionsRef}
         style={{ width: "100%" }}
@@ -139,7 +171,8 @@ export const SelectWithSearch = <T extends OptionType>({
               key={option.value}
               id={option.value}
               onMouseDown={() => handleSelect(option)}
-              onMouseEnter={() => setHighlightedIndex(index)}
+              onMouseEnter={() => setHighlightedIndex(-1)}
+              onMouseOut={() => setHighlightedIndex(index)}
               role="option"
               aria-selected={selectedValue === option.value}
               aria-current={highlightedIndex === index}

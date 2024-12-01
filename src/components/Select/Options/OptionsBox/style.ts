@@ -32,6 +32,11 @@ export const Options = styled.dialog`
     flex-direction: column;
   }
 
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
   @keyframes open {
     from {
       opacity: 0;

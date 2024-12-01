@@ -23,6 +23,17 @@ const options: Option[] = [
   { value: "7", label: "апельсин" },
 ];
 
+const CustomSelectOption = ({
+  checked,
+  label,
+}: Pick<Option, "label"> & { checked: boolean }) => {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+      <CheckBox checked={checked} readOnly /> <span>{label}</span>
+    </div>
+  );
+};
+
 function App() {
   const [search, setSearch] = useState("");
   const [selectWithSearchValue, setSelectWithSearchValue] = useState("");
@@ -74,19 +85,6 @@ function App() {
         <Avatar variant="Large" userInitials="KS" imgSrc={ava} />
       </div>
       <div className="block">
-        <Select
-          options={options}
-          selectedValue={defaultSelectValue}
-          onSelect={(value) => setDefaultSeletValue(value)}
-        />
-
-        <MultipleSelect
-          options={options}
-          disabledValues={disabledValues}
-          selectedValues={multipleSelectValues}
-          onSelect={setMultipleSelectValues}
-        />
-
         <SelectWithSearch
           options={filteredOptions}
           value={search}
@@ -97,6 +95,26 @@ function App() {
             setSearch("");
             setSelectWithSearchValue("");
           }}
+        />
+        <MultipleSelect
+          options={options}
+          disabledValues={disabledValues}
+          selectedValues={multipleSelectValues}
+          onSelect={setMultipleSelectValues}
+        />
+        <MultipleSelect
+          options={options}
+          renderOption={({ label, selected }) => (
+            <CustomSelectOption checked={selected} label={label} />
+          )}
+          disabledValues={disabledValues}
+          selectedValues={multipleSelectValues}
+          onSelect={setMultipleSelectValues}
+        />
+        <Select
+          options={options}
+          selectedValue={defaultSelectValue}
+          onSelect={(value) => setDefaultSeletValue(value)}
         />
       </div>
     </section>

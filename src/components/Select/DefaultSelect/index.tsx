@@ -7,8 +7,7 @@ import {
 } from "react";
 import * as S from "./styles";
 import { type Option as OptionType } from "../types.ts";
-import { Option } from "../Options";
-import { OptionsBox } from "../Options/OptionsBox";
+import { Option, OptionsBox } from "../Options";
 
 type Props<T extends OptionType> = {
   error?: boolean;
@@ -32,8 +31,9 @@ export const Select = <T extends OptionType>({
   const value =
     options.filter((option) => option.value === selectedValue)?.[0]?.label ||
     "";
-  const inputRef = useRef<HTMLInputElement>(null);
   const optionsRef = useRef<HTMLDialogElement>(null);
+  const selectRef = useRef<HTMLDivElement>(null);
+
   const scrollToActive = () => {
     const container = optionsRef.current;
     const activeElement: HTMLElement | null =
@@ -79,21 +79,45 @@ export const Select = <T extends OptionType>({
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+
+    const handleFocus = (event: FocusEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("focusin", handleFocus);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("focusin", handleFocus);
+    };
+  }, []);
+
   return (
-    <S.CustomSelect aria-expanded={showDropdown} $error={error}>
+    <S.CustomSelect aria-expanded={showDropdown} $error={error} ref={selectRef}>
       <input
-        ref={inputRef}
         disabled={disabled}
         type="text"
         value={value}
         autoComplete="off"
-        onBlur={() => setShowDropdown(false)}
         onKeyDown={handleKeyDown}
         onClick={() => setShowDropdown(!showDropdown)}
-        aria-controls="dropdown-list"
         readOnly
       />
-      <span className="chevron">
+      <span className="chevron" onClick={() => setShowDropdown(!showDropdown)}>
         <svg
           width="24"
           height="24"
@@ -121,7 +145,8 @@ export const Select = <T extends OptionType>({
             key={option.value}
             id={option.value}
             onMouseDown={() => handleSelect(option)}
-            onMouseEnter={() => setHighlightedIndex(index)}
+            onMouseEnter={() => setHighlightedIndex(-1)}
+            onMouseOut={() => setHighlightedIndex(index)}
             role="option"
             aria-selected={selectedValue === option.value}
             aria-current={highlightedIndex === index}
