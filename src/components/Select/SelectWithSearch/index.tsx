@@ -2,13 +2,15 @@ import {
   type KeyboardEvent,
   type ChangeEvent,
   type ReactElement,
-  useEffect,
   useRef,
   useState,
+  useEffect,
 } from "react";
 import * as S from "./style";
 import { type Option as OptionType } from "../types.ts";
-import { OptionsWrapper, Option } from "../Options";
+import { Option } from "../Options";
+import { OptionsBox } from "../Options/OptionsBox";
+import { Input } from "../../Input";
 
 type Props<T extends OptionType> = {
   options: T[];
@@ -36,24 +38,23 @@ export const SelectWithSearch = <T extends OptionType>({
   const [showDropdown, setShowDropdown] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const optionsRef = useRef<HTMLDialogElement>(null);
+  const scrollToActive = () => {
+    const container = optionsRef.current;
+    const activeElement: HTMLElement | null =
+      container && container.querySelector('[aria-current="true"]');
+
+    if (activeElement && container) {
+      container.scrollTo({
+        top: activeElement.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        inputRef.current &&
-        !inputRef.current.contains(event.target as Node) &&
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setShowDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    scrollToActive();
+  }, [highlightedIndex]);
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -79,6 +80,14 @@ export const SelectWithSearch = <T extends OptionType>({
       setHighlightedIndex((prevIndex) =>
         prevIndex > 0 ? prevIndex - 1 : prevIndex,
       );
+    } else if (event.key === "Enter" && !showDropdown) {
+      setShowDropdown(true);
+    } else if (
+      event.key === "Enter" &&
+      showDropdown &&
+      highlightedIndex === -1
+    ) {
+      setShowDropdown(false);
     } else if (event.key === "Enter" && highlightedIndex >= 0) {
       handleSelect(options[highlightedIndex]);
     }
@@ -96,9 +105,13 @@ export const SelectWithSearch = <T extends OptionType>({
 
   return (
     <S.Wrapper>
-      {onReset && <button onClick={handleReset}>&#10005;</button>}
+      {onReset && (
+        <span className="reset-button" onClick={handleReset}>
+          &#10005;
+        </span>
+      )}
 
-      <input
+      <Input
         ref={inputRef}
         disabled={disabled}
         type="text"
@@ -106,35 +119,36 @@ export const SelectWithSearch = <T extends OptionType>({
         autoComplete="off"
         onChange={handleSearch}
         onFocus={handleFocus}
-        onBlur={() => setShowDropdown(false)}
         onKeyDown={handleKeyDown}
+        onBlur={() => setShowDropdown(false)}
         aria-controls="dropdown-list"
         aria-expanded={showDropdown}
       />
 
-      <OptionsWrapper
+      <OptionsBox
+        open={true}
         isOpen={showDropdown}
-        id="dropdown-list"
-        ref={dropdownRef}
+        ref={optionsRef}
+        style={{ width: "100%" }}
       >
         {loading ? (
-          <S.Option>Загрузка...</S.Option>
+          <Option>Загрузка...</Option>
         ) : (
           options.map((option, index) => (
             <Option
-              isSelected={selectedValue === option.value}
               key={option.value}
               id={option.value}
               onMouseDown={() => handleSelect(option)}
               onMouseEnter={() => setHighlightedIndex(index)}
               role="option"
-              aria-selected={highlightedIndex === index}
+              aria-selected={selectedValue === option.value}
+              aria-current={highlightedIndex === index}
             >
               {renderOption ? renderOption(option) : option.label}
             </Option>
           ))
         )}
-      </OptionsWrapper>
+      </OptionsBox>
     </S.Wrapper>
   );
 };

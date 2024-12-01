@@ -1,24 +1,18 @@
 import styled from "styled-components";
 import { Colors } from "../../../colors.ts";
 
-type Props = {
-  $isSelected?: boolean;
-};
-
-export const Option = styled.div<Props>`
+export const Option = styled.div`
   display: flex;
   align-items: center;
   padding: 8px 16px;
-  color: #1d1c29;
+  color: ${Colors.blueGray["800"]};
   font-size: 14px;
   cursor: pointer;
 
-  ${({ $isSelected }) =>
-    $isSelected &&
-    `
+  &[aria-selected="true"] {
     background-color: #f7faff;
-    color: #1b4dcb;;
-  `};
+    color: #1b4dcb;
+  }
 
   &[aria-disabled="true"] {
     background-color: transparent;
@@ -26,7 +20,7 @@ export const Option = styled.div<Props>`
     pointer-events: none;
   }
 
-  &[aria-selected="true"]:not(&[aria-disabled="true"]) {
+  &[aria-current="true"]:not(&[aria-disabled="true"]) {
     color: ${Colors.blue["600"]};
     background-color: ${Colors.blueGray["25"]};
   }

@@ -74,18 +74,6 @@ function App() {
         <Avatar variant="Large" userInitials="KS" imgSrc={ava} />
       </div>
       <div className="block">
-        <SelectWithSearch
-          options={filteredOptions}
-          value={search}
-          selectedValue={selectWithSearchValue}
-          onSelect={(value) => setSelectWithSearchValue(value)}
-          onChange={(search) => setSearch(search)}
-          onReset={() => {
-            setSearch("");
-            setSelectWithSearchValue("");
-          }}
-        />
-
         <Select
           options={options}
           selectedValue={defaultSelectValue}
@@ -97,6 +85,18 @@ function App() {
           disabledValues={disabledValues}
           selectedValues={multipleSelectValues}
           onSelect={setMultipleSelectValues}
+        />
+
+        <SelectWithSearch
+          options={filteredOptions}
+          value={search}
+          selectedValue={selectWithSearchValue}
+          onSelect={(value) => setSelectWithSearchValue(value)}
+          onChange={(search) => setSearch(search)}
+          onReset={() => {
+            setSearch("");
+            setSelectWithSearchValue("");
+          }}
         />
       </div>
     </section>

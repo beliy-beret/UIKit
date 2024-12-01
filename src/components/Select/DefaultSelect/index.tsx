@@ -7,7 +7,8 @@ import {
 } from "react";
 import * as S from "./styles";
 import { type Option as OptionType } from "../types.ts";
-import { OptionsWrapper, Option } from "../Options";
+import { Option } from "../Options";
+import { OptionsBox } from "../Options/OptionsBox";
 
 type Props<T extends OptionType> = {
   error?: boolean;
@@ -28,28 +29,27 @@ export const Select = <T extends OptionType>({
 }: Props<T>) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const value =
     options.filter((option) => option.value === selectedValue)?.[0]?.label ||
     "";
+  const inputRef = useRef<HTMLInputElement>(null);
+  const optionsRef = useRef<HTMLDialogElement>(null);
+  const scrollToActive = () => {
+    const container = optionsRef.current;
+    const activeElement: HTMLElement | null =
+      container && container.querySelector('[aria-current="true"]');
+
+    if (activeElement && container) {
+      container.scrollTo({
+        top: activeElement.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        inputRef.current &&
-        !inputRef.current.contains(event.target as Node) &&
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setShowDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    scrollToActive();
+  }, [highlightedIndex]);
 
   const handleSelect = (option: OptionType) => {
     onSelect(option.value);
@@ -66,13 +66,17 @@ export const Select = <T extends OptionType>({
       setHighlightedIndex((prevIndex) =>
         prevIndex > 0 ? prevIndex - 1 : prevIndex,
       );
+    } else if (event.key === "Enter" && !showDropdown) {
+      setShowDropdown(true);
+    } else if (
+      event.key === "Enter" &&
+      showDropdown &&
+      highlightedIndex === -1
+    ) {
+      setShowDropdown(false);
     } else if (event.key === "Enter" && highlightedIndex >= 0) {
       handleSelect(options[highlightedIndex]);
     }
-  };
-
-  const handleFocus = () => {
-    setShowDropdown(true);
   };
 
   return (
@@ -83,13 +87,13 @@ export const Select = <T extends OptionType>({
         type="text"
         value={value}
         autoComplete="off"
-        onFocus={handleFocus}
         onBlur={() => setShowDropdown(false)}
         onKeyDown={handleKeyDown}
+        onClick={() => setShowDropdown(!showDropdown)}
         aria-controls="dropdown-list"
         readOnly
       />
-      <div className="chevron">
+      <span className="chevron">
         <svg
           width="24"
           height="24"
@@ -104,27 +108,28 @@ export const Select = <T extends OptionType>({
             fill="#1D1C29"
           />
         </svg>
-      </div>
+      </span>
 
-      <OptionsWrapper
+      <OptionsBox
+        open={showDropdown}
         isOpen={showDropdown}
-        id="dropdown-list"
-        ref={dropdownRef}
+        ref={optionsRef}
+        style={{ width: "100%" }}
       >
         {options.map((option, index) => (
           <Option
-            isSelected={selectedValue === option.value}
             key={option.value}
             id={option.value}
             onMouseDown={() => handleSelect(option)}
             onMouseEnter={() => setHighlightedIndex(index)}
             role="option"
-            aria-selected={highlightedIndex === index}
+            aria-selected={selectedValue === option.value}
+            aria-current={highlightedIndex === index}
           >
             {renderOption ? renderOption(option) : option.label}
           </Option>
         ))}
-      </OptionsWrapper>
+      </OptionsBox>
     </S.CustomSelect>
   );
 };

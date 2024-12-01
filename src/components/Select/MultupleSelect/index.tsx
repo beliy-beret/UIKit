@@ -130,13 +130,15 @@ export const MultipleSelect = <T extends OptionType>({
       >
         {options.map((option, index) => (
           <Option
-            isSelected={selectedValues.some((value) => value === option.value)}
             key={option.value}
             id={option.value}
             onMouseDown={() => handleSelect(option)}
             onMouseEnter={() => setHighlightedIndex(index)}
             role="option"
-            aria-selected={highlightedIndex === index}
+            aria-selected={selectedValues.some(
+              (value) => value === option.value,
+            )}
+            aria-current={highlightedIndex === index}
             aria-disabled={disabledValues.some(
               (value) => value === option.value,
             )}

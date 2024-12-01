@@ -2,18 +2,24 @@ import styled from "styled-components";
 import { Colors } from "../../colors";
 
 export const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: start;
   position: relative;
 
-  button {
+  .reset-button {
     width: fit-content;
-    padding: unset;
+    height: 30px;
+    padding-inline: 16px;
     position: absolute;
-    right: 8px;
-    top: 0;
+    right: 0;
+    top: 50%;
     z-index: 1;
     background-color: transparent;
-    border: none;
+    display: flex;
+    align-items: center;
     cursor: pointer;
+    translate: 0 -50%;
   }
 `;
 

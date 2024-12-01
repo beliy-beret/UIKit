@@ -38,6 +38,7 @@ export const CustomSelect = styled.div<Props>`
     right: 16px;
     translate: 0 -50%;
     pointer-events: none;
+    cursor: pointer;
 
     svg {
       margin-left: auto;
