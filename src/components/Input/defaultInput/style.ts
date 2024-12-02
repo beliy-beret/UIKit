@@ -18,7 +18,7 @@ export const Input = styled.input<InputProps>`
 
   &:focus {
     outline: none;
-    box-shadow: inset 0 0 0 1px ${Colors.blue["500"]};
+    box-shadow: 0 0 0 1px ${Colors.blue["500"]};
   }
 
   &[type="number"] {

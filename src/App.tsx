@@ -8,6 +8,7 @@ import {
   MultipleSelect,
   Input,
   Link,
+  Badge,
 } from "./components";
 import "./style.css";
 import ava from "./assets/pikachu.png";
@@ -229,6 +230,13 @@ function App() {
           selectedValue={defaultSelectValue}
           onSelect={(value) => setDefaultSeletValue(value)}
         />
+      </div>
+      <div className="block">
+        <Badge>Label</Badge>
+        <Badge design="Primary">Label</Badge>
+        <Badge design="Warning">Label</Badge>
+        <Badge design="Dangerous">Label</Badge>
+        <Badge design="Informative">Label</Badge>
       </div>
     </section>
   );
