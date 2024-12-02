@@ -160,8 +160,8 @@ function App() {
         <Link design="Dangerous" href="">
           Library link
         </Link>
-        <Link design="Warning" href="">
-          Library link
+        <Link as="ReactLink" design="Warning" to="">
+          React link
         </Link>
       </div>
 
