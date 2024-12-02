@@ -24,7 +24,7 @@ export const CustomSelect = styled.div<Props>`
     &:focus-visible {
       outline: none;
       ${({ $error }) =>
-        !$error && `box-shadow: inset 0 0 0 3px ${Colors.blue["200"]};`};
+        !$error && `box-shadow: 0 0 0 3px ${Colors.blue["200"]};`};
     }
   }
 

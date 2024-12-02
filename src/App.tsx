@@ -6,6 +6,7 @@ import {
   Select,
   Avatar,
   MultipleSelect,
+  Input,
 } from "./components";
 import "./style.css";
 import ava from "./assets/pikachu.png";
@@ -58,14 +59,94 @@ function App() {
   return (
     <section>
       <div className="block">
-        <Button>My button</Button>
-        <Button variant="blueSecondary">My button</Button>
-        <Button variant="blueOutline">My button</Button>
-        <Button variant="blueLink">My button</Button>
+        <Button variant="Primary" design="Primary">
+          My button
+        </Button>
+        <Button variant="Secondary" design="Primary">
+          My button
+        </Button>
+        <Button variant="Outline" design="Primary">
+          My button
+        </Button>
+        <Button variant="Text" design="Primary">
+          My button
+        </Button>
+      </div>
+      <div className="block">
+        <Button variant="Primary" design="Body">
+          My button
+        </Button>
+        <Button variant="Secondary" design="Body">
+          My button
+        </Button>
+        <Button variant="Outline" design="Body">
+          My button
+        </Button>
+        <Button variant="Text" design="Body">
+          My button
+        </Button>
+      </div>
+      <div className="block">
+        <Button variant="Primary" design="Warning">
+          My button
+        </Button>
+        <Button variant="Secondary" design="Warning">
+          My button
+        </Button>
+        <Button variant="Outline" design="Warning">
+          My button
+        </Button>
+        <Button variant="Text" design="Warning">
+          My button
+        </Button>
+      </div>
+      <div className="block">
+        <Button variant="Primary" design="Informative">
+          My button
+        </Button>
+        <Button variant="Secondary" design="Informative">
+          My button
+        </Button>
+        <Button variant="Outline" design="Informative">
+          My button
+        </Button>
+        <Button variant="Text" design="Informative">
+          My button
+        </Button>
+      </div>
+      <div className="block">
+        <Button variant="Primary" design="Dangerous">
+          My button
+        </Button>
+        <Button variant="Secondary" design="Dangerous">
+          My button
+        </Button>
+        <Button variant="Outline" design="Dangerous">
+          My button
+        </Button>
+        <Button variant="Text" design="Dangerous">
+          My button
+        </Button>
+      </div>
+      <div className="block">
+        <Button variant="Primary" design="Completed">
+          My button
+        </Button>
+        <Button variant="Secondary" design="Completed">
+          My button
+        </Button>
+        <Button variant="Outline" design="Completed">
+          My button
+        </Button>
+        <Button variant="Text" design="Completed">
+          My button
+        </Button>
       </div>
       <div className="block">
         <CheckBox readOnly />
         <CheckBox checked readOnly />
+        <CheckBox disabled readOnly />
+        <CheckBox disabled checked readOnly />
       </div>
       <div className="block textarea">
         <TextArea defaultValue="Разработчик новых методов изготовления датчиков из ОЭЗ «Дубна» получил статус «Национального чемпиона»" />
@@ -73,6 +154,11 @@ function App() {
           error
           defaultValue="Разработчик новых методов изготовления датчиков из ОЭЗ «Дубна» получил статус «Национального чемпиона»"
         />
+      </div>
+      <div className="block textarea">
+        <Input />
+        <Input error />
+        <Input placeholder="Placeholder text" />
       </div>
       <div className="block avatars">
         <Avatar variant="Small" userInitials="KS" />

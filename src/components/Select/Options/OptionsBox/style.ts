@@ -9,7 +9,7 @@ export const Options = styled.dialog`
   overflow-y: auto;
   max-height: 200px;
   padding: 0;
-  bottom: 0;
+  bottom: -4px;
   translate: 0 100%;
 
   &::-webkit-scrollbar {
