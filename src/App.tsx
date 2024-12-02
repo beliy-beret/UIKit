@@ -7,6 +7,7 @@ import {
   Avatar,
   MultipleSelect,
   Input,
+  Link,
 } from "./components";
 import "./style.css";
 import ava from "./assets/pikachu.png";
@@ -142,12 +143,35 @@ function App() {
           My button
         </Button>
       </div>
+
+      <div className="block">
+        <Link design="Informative" href="">
+          Library link
+        </Link>
+        <Link design="Body" href="">
+          Library link
+        </Link>
+        <Link design="Primary" href="">
+          Library link
+        </Link>
+        <Link design="Completed" href="">
+          Library link
+        </Link>
+        <Link design="Dangerous" href="">
+          Library link
+        </Link>
+        <Link design="Warning" href="">
+          Library link
+        </Link>
+      </div>
+
       <div className="block">
         <CheckBox readOnly />
         <CheckBox checked readOnly />
         <CheckBox disabled readOnly />
         <CheckBox disabled checked readOnly />
       </div>
+
       <div className="block textarea">
         <TextArea defaultValue="Разработчик новых методов изготовления датчиков из ОЭЗ «Дубна» получил статус «Национального чемпиона»" />
         <TextArea
@@ -155,11 +179,13 @@ function App() {
           defaultValue="Разработчик новых методов изготовления датчиков из ОЭЗ «Дубна» получил статус «Национального чемпиона»"
         />
       </div>
+
       <div className="block textarea">
         <Input />
         <Input error />
         <Input placeholder="Placeholder text" />
       </div>
+
       <div className="block avatars">
         <Avatar variant="Small" userInitials="KS" />
         <Avatar userInitials="KS" />
@@ -170,6 +196,7 @@ function App() {
         <Avatar userInitials="KS" imgSrc={ava} />
         <Avatar variant="Large" userInitials="KS" imgSrc={ava} />
       </div>
+
       <div className="block">
         <SelectWithSearch
           options={filteredOptions}

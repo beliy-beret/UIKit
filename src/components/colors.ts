@@ -114,3 +114,12 @@ export const Colors = {
     900: "#1C1708",
   },
 };
+
+export const ColorPalette = {
+  Informative: Colors.purple,
+  Body: Colors.blueGray,
+  Dangerous: Colors.red,
+  Completed: Colors.green,
+  Primary: Colors.blue,
+  Warning: Colors.yellow,
+} as const;

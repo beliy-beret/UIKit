@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Colors } from "../colors.ts";
-import { ButtonDesign, ButtonVariant, ButtonColorPalette } from "./types.ts";
+import { ColorPalette, Colors } from "../colors.ts";
+import { ButtonDesign, ButtonVariant } from "./types.ts";
 
 type ButtonProps = {
   $variant: ButtonVariant;
@@ -31,99 +31,99 @@ export const Button = styled.button<ButtonProps>`
   ${({ $variant, $design }) =>
     $variant === "Primary" &&
     `
-    background-color: ${ButtonColorPalette[$design]["400"]};
-    color: ${ButtonColorPalette[$design]["10"]};
+    background-color: ${ColorPalette[$design]["400"]};
+    color: ${ColorPalette[$design]["10"]};
     
     @media (hover: hover) {
       &:hover:not(:active) {
-        background-color: ${ButtonColorPalette[$design]["500"]};
-        color: ${ButtonColorPalette[$design]["10"]};
+        background-color: ${ColorPalette[$design]["500"]};
+        color: ${ColorPalette[$design]["10"]};
       }
     }
 
     &:active {
-      background-color: ${ButtonColorPalette[$design]["600"]};
-      color: ${ButtonColorPalette[$design]["10"]};
+      background-color: ${ColorPalette[$design]["600"]};
+      color: ${ColorPalette[$design]["10"]};
     }
 
     &:focus-visible {
-      background-color: ${ButtonColorPalette[$design]["400"]};
+      background-color: ${ColorPalette[$design]["400"]};
       outline: none;
-      box-shadow: inset 0 0 0 3px ${ButtonColorPalette[$design]["200"]};      
-      color: ${ButtonColorPalette[$design]["10"]};             
+      box-shadow: inset 0 0 0 3px ${ColorPalette[$design]["200"]};      
+      color: ${ColorPalette[$design]["10"]};             
     }    
   `};
 
   ${({ $variant, $design }) =>
     $variant === "Secondary" &&
     `
-    background-color: ${ButtonColorPalette[$design]["10"]};
-    color: ${ButtonColorPalette[$design]["400"]};
+    background-color: ${ColorPalette[$design]["10"]};
+    color: ${ColorPalette[$design]["400"]};
     
     @media (hover: hover) {
       &:hover:not(:active) {
-        background-color: ${ButtonColorPalette[$design]["25"]};
-        color: ${ButtonColorPalette[$design]["500"]};
+        background-color: ${ColorPalette[$design]["25"]};
+        color: ${ColorPalette[$design]["500"]};
       }
     }
 
     &:active {
-      background-color: ${ButtonColorPalette[$design]["25"]};      
-      color: ${ButtonColorPalette[$design]["600"]};
+      background-color: ${ColorPalette[$design]["25"]};      
+      color: ${ColorPalette[$design]["600"]};
     }
 
     &:focus-visible {
       outline: none;
-      box-shadow: inset 0 0 0 3px ${ButtonColorPalette[$design]["200"]};      
-      color: ${ButtonColorPalette[$design]["400"]};             
+      box-shadow: inset 0 0 0 3px ${ColorPalette[$design]["200"]};      
+      color: ${ColorPalette[$design]["400"]};             
     }    
   `};
 
   ${({ $variant, $design }) =>
     $variant === "Outline" &&
     `
-    color: ${ButtonColorPalette[$design]["400"]};
-    border: 1px solid ${ButtonColorPalette[$design]["50"]};
+    color: ${ColorPalette[$design]["400"]};
+    border: 1px solid ${ColorPalette[$design]["50"]};
     background-color: transparent;
     
     @media (hover: hover) {
       &:hover:not(:active) {
-        border-color: ${ButtonColorPalette[$design]["500"]};
-        color: ${ButtonColorPalette[$design]["500"]};
+        border-color: ${ColorPalette[$design]["500"]};
+        color: ${ColorPalette[$design]["500"]};
       }
     }
 
     &:active {
-      border-color: ${ButtonColorPalette[$design]["600"]};      
-      color: ${ButtonColorPalette[$design]["600"]};
+      border-color: ${ColorPalette[$design]["600"]};      
+      color: ${ColorPalette[$design]["600"]};
     }
 
     &:focus-visible {
       outline: none;
-      box-shadow: inset 0 0 0 3px ${ButtonColorPalette[$design]["200"]};      
-      color: ${ButtonColorPalette[$design]["500"]};             
+      box-shadow: inset 0 0 0 3px ${ColorPalette[$design]["200"]};      
+      color: ${ColorPalette[$design]["500"]};             
     }    
   `};
 
   ${({ $variant, $design }) =>
-    $variant === "Link" &&
+    $variant === "Text" &&
     `
     background-color: transparent;
-    color: ${ButtonColorPalette[$design]["400"]};
+    color: ${ColorPalette[$design]["400"]};
     
     &:active {
-      color: ${ButtonColorPalette[$design]["600"]};
+      color: ${ColorPalette[$design]["600"]};
     }
 
     &:focus-visible {
       outline: none;
-      box-shadow: inset 0 0 0 3px ${ButtonColorPalette[$design]["200"]};      
-      color: ${ButtonColorPalette[$design]["500"]};             
+      box-shadow: inset 0 0 0 3px ${ColorPalette[$design]["200"]};      
+      color: ${ColorPalette[$design]["500"]};             
     }
 
     @media (hover: hover) {
       &:hover:not(:active) {
-        color: ${ButtonColorPalette[$design]["500"]};
+        color: ${ColorPalette[$design]["500"]};
       }
     } 
   `};

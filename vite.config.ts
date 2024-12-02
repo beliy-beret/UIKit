@@ -49,7 +49,13 @@ export default defineConfig({
     copyPublicDir: false,
     // https://vitejs.dev/config/build-options.html#build-rollupoptions
     rollupOptions: {
-      external: ["react", "react-dom", "styled-components", "classnames"],
+      external: [
+        "react",
+        "react-dom",
+        "styled-components",
+        "classnames",
+        "react-router",
+      ],
       input: entries,
       output: [
         {
