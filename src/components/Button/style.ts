@@ -23,7 +23,7 @@ export const Button = styled.button<ButtonProps>`
   }
 
   &:disabled {
-    border-color: ${Colors.blueGray["300"]};
+    background-color: ${Colors.blueGray["25"]};
     color: ${Colors.blueGray["400"]};
     cursor: default;
   }
@@ -35,13 +35,13 @@ export const Button = styled.button<ButtonProps>`
     color: ${ColorPalette[$design]["10"]};
     
     @media (hover: hover) {
-      &:hover:not(:active) {
+      &:hover:not(:active, :disabled) {
         background-color: ${ColorPalette[$design]["500"]};
         color: ${ColorPalette[$design]["10"]};
       }
     }
 
-    &:active {
+    &:active:not(:disabled) {
       background-color: ${ColorPalette[$design]["600"]};
       color: ${ColorPalette[$design]["10"]};
     }
@@ -61,13 +61,13 @@ export const Button = styled.button<ButtonProps>`
     color: ${ColorPalette[$design]["400"]};
     
     @media (hover: hover) {
-      &:hover:not(:active) {
+      &:hover:not(:active, :disabled) {
         background-color: ${ColorPalette[$design]["25"]};
         color: ${ColorPalette[$design]["500"]};
       }
     }
 
-    &:active {
+    &:active:not(:disabled) {
       background-color: ${ColorPalette[$design]["25"]};      
       color: ${ColorPalette[$design]["600"]};
     }
@@ -87,13 +87,13 @@ export const Button = styled.button<ButtonProps>`
     background-color: transparent;
     
     @media (hover: hover) {
-      &:hover:not(:active) {
+      &:hover:not(:active, :disabled) {
         border-color: ${ColorPalette[$design]["500"]};
         color: ${ColorPalette[$design]["500"]};
       }
     }
 
-    &:active {
+    &:active:not(:disabled) {
       border-color: ${ColorPalette[$design]["600"]};      
       color: ${ColorPalette[$design]["600"]};
     }
@@ -102,7 +102,12 @@ export const Button = styled.button<ButtonProps>`
       outline: none;
       box-shadow: inset 0 0 0 3px ${ColorPalette[$design]["200"]};      
       color: ${ColorPalette[$design]["500"]};             
-    }    
+    }
+    
+    &:disabled {
+      border-color: ${Colors.blueGray["300"]};
+    }
+        
   `};
 
   ${({ $variant, $design }) =>
@@ -111,7 +116,7 @@ export const Button = styled.button<ButtonProps>`
     background-color: transparent;
     color: ${ColorPalette[$design]["400"]};
     
-    &:active {
+    &:active:not(:disabled) {
       color: ${ColorPalette[$design]["600"]};
     }
 
@@ -122,7 +127,7 @@ export const Button = styled.button<ButtonProps>`
     }
 
     @media (hover: hover) {
-      &:hover:not(:active) {
+      &:hover:not(:active, :disabled) {
         color: ${ColorPalette[$design]["500"]};
       }
     } 
