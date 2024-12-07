@@ -32,7 +32,7 @@ const CustomSelectOption = ({
 }: Pick<Option, "label"> & { checked: boolean }) => {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-      <CheckBox checked={checked} readOnly /> <span>{label}</span>
+      <CheckBox id={label} checked={checked} readOnly /> <span>{label}</span>
     </div>
   );
 };
@@ -167,10 +167,10 @@ function App() {
       </div>
 
       <div className="block">
-        <CheckBox readOnly />
-        <CheckBox checked readOnly />
-        <CheckBox disabled readOnly />
-        <CheckBox disabled checked readOnly />
+        <CheckBox id="checkbox-1" readOnly />
+        <CheckBox id="checkbox-2" checked readOnly />
+        <CheckBox id="checkbox-3" disabled readOnly />
+        <CheckBox id="checkbox-4" disabled checked readOnly />
       </div>
 
       <div className="block textarea">

@@ -1,22 +1,52 @@
-import { forwardRef, ComponentProps } from "react";
+import { ChangeEvent, forwardRef, KeyboardEvent } from "react";
 import * as S from "./style";
 
-type Props = Pick<
-  ComponentProps<"input">,
-  | "id"
-  | "className"
-  | "checked"
-  | "disabled"
-  | "onChange"
-  | "readOnly"
-  | "tabIndex"
->;
+type Props1 = {
+  id: string;
+  onToggleChecked: (checked: boolean) => void;
+  checked: boolean;
+  className?: string;
+  disabled?: boolean;
+  tabIndex?: number;
+};
+
+type Props2 = {
+  checked?: boolean;
+  readOnly: boolean;
+  id?: string;
+  className?: string;
+  onToggleChecked?: (checked: boolean) => void;
+  disabled?: boolean;
+  tabIndex?: number;
+};
+
+type Props = Props1 | Props2;
 
 export const CheckBox = forwardRef<HTMLInputElement, Props>(
-  ({ className, id, ...props }: Props, ref) => {
+  ({ className, id, checked, onToggleChecked, ...props }: Props, ref) => {
+    const checkedHandler = (event: ChangeEvent<HTMLInputElement>) => {
+      if (onToggleChecked) {
+        onToggleChecked(event.currentTarget.checked);
+      }
+    };
+
+    const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+      if (onToggleChecked && event.key === "Enter") {
+        onToggleChecked(!event.currentTarget.checked);
+      }
+    };
+
     return (
       <S.Wrapper>
-        <input id={id} ref={ref} type="checkbox" {...props} />
+        <input
+          id={id}
+          ref={ref}
+          type="checkbox"
+          checked={checked}
+          {...props}
+          onKeyDown={onKeyDownHandler}
+          onChange={checkedHandler}
+        />
         <S.CheckBox htmlFor={id} className={className}>
           <svg
             width="10"
