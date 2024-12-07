@@ -2,7 +2,7 @@ import { ComponentProps } from "react";
 import { BadgeDesign } from "./types.ts";
 import { StyledBadge } from "./style";
 
-type Props = ComponentProps<"div"> & {
+type Props = Pick<ComponentProps<"div">, "children" | "className"> & {
   design?: BadgeDesign;
 };
 

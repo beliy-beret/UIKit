@@ -1,8 +1,11 @@
-import { type ButtonHTMLAttributes } from "react";
+import { ComponentProps } from "react";
 import * as S from "./style";
 import { ButtonDesign, ButtonVariant } from "./types.ts";
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+type Props = Pick<
+  ComponentProps<"button">,
+  "children" | "className" | "type" | "style" | "onClick" | "onKeyDown"
+> & {
   variant?: ButtonVariant;
   design?: ButtonDesign;
 };
