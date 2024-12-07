@@ -6,59 +6,79 @@ type Props = {
   $isDisabled?: boolean;
 };
 
-export const Wrapper = styled.div`
-  input {
-    display: none;
-  }
-`;
-
 export const CheckBox = styled.label<Props>`
   display: grid;
   place-content: center;
   width: 16px;
   height: 16px;
   border-radius: 4px;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid ${Colors.blueGray["300"]};
+  background-color: ${Colors.blueGray["25"]};
   transition: all 200ms ease-in-out;
-
-  ${({ $isChecked, $isDisabled }) => {
-    if ($isDisabled) {
-      return `
-        background-color: ${Colors.blueGray["50"]};
-        border-color: ${Colors.blueGray["200"]};
-      `;
-    }
-    if ($isChecked) {
-      return `
-        background-color: ${Colors.blue["10"]};
-        border-color: ${Colors.blue["400"]};
-      `;
-    }
-
-    if ($isChecked && $isDisabled) {
-      return `
-        background-color: ${Colors.blueGray["50"]};
-        border-color: ${Colors.blueGray["200"]};
-      `;
-    }
-
-    return `
-      background-color: ${Colors.blueGray["25"]};
-      border-color: ${Colors.blueGray["300"]};    
-    `;
-  }};
-
-  &:focus-visible {
-    outline: none;
-    border: none;
-    box-shadow: 0 0 0 3px ${Colors.blue["200"]};
-  }
+  cursor: pointer;
 
   @media (hover: hover) {
     &:hover {
       background-color: ${Colors.blue["10"]};
       border-color: ${Colors.blue["500"]};
     }
+  }
+
+  svg {
+    visibility: hidden;
+  }
+`;
+
+export const Wrapper = styled.div`
+  position: relative;
+  width: fit-content;
+  display: inline-block;
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    outline: none;
+  }
+
+  input:checked + ${CheckBox} {
+    background-color: ${Colors.blue["10"]};
+    border-color: ${Colors.blue["400"]};
+
+    svg {
+      visibility: visible;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: ${Colors.blue["10"]};
+        border-color: ${Colors.blue["500"]};
+      }
+    }
+  }
+
+  input:disabled + ${CheckBox} {
+    background-color: ${Colors.blueGray["50"]};
+    border-color: ${Colors.blueGray["200"]};
+    cursor: default;
+
+    svg {
+      path {
+        fill: ${Colors.blueGray["200"]};
+      }
+    }
+  }
+
+  input:disabled:checked + ${CheckBox} {
+    background-color: ${Colors.blueGray["50"]};
+    border-color: ${Colors.blueGray["200"]};
+  }
+
+  input:focus-visible + ${CheckBox} {
+    outline: none;
+    box-shadow: 0 0 0 3px ${Colors.blue["200"]};
   }
 `;
