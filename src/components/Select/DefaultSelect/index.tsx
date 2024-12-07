@@ -109,6 +109,7 @@ export const Select = <T extends OptionType>({
   return (
     <S.CustomSelect aria-expanded={showDropdown} $error={error} ref={selectRef}>
       <input
+        className="uikit-select-input"
         disabled={disabled}
         type="text"
         value={value}

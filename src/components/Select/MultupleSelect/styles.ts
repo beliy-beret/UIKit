@@ -11,7 +11,7 @@ export const CustomSelect = styled.div<Props>`
   align-items: center;
   position: relative;
 
-  input {
+  input.uikit-select-input {
     background-color: ${Colors.gray["10"]};
     border-radius: 4px;
     width: 100%;

@@ -34,17 +34,17 @@ export const Wrapper = styled.div`
   width: fit-content;
   display: inline-block;
 
-  input {
+  input.uikit-input {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 0;
-    border: none;
-    outline: none;
+    border: none !important;
+    outline: none !important;
   }
 
-  input:checked + ${CheckBox} {
+  input:checked.uikit-input + ${CheckBox} {
     background-color: ${Colors.blue["10"]};
     border-color: ${Colors.blue["400"]};
 
@@ -60,7 +60,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  input:disabled + ${CheckBox} {
+  input:disabled.uikit-input + ${CheckBox} {
     background-color: ${Colors.blueGray["50"]};
     border-color: ${Colors.blueGray["200"]};
     cursor: default;
@@ -72,12 +72,12 @@ export const Wrapper = styled.div`
     }
   }
 
-  input:disabled:checked + ${CheckBox} {
+  input:disabled:checked.uikit-input + ${CheckBox} {
     background-color: ${Colors.blueGray["50"]};
     border-color: ${Colors.blueGray["200"]};
   }
 
-  input:focus-visible + ${CheckBox} {
+  input:focus-visible.uikit-input + ${CheckBox} {
     outline: none;
     box-shadow: 0 0 0 3px ${Colors.blue["200"]};
   }

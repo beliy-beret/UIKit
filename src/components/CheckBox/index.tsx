@@ -39,6 +39,7 @@ export const CheckBox = forwardRef<HTMLInputElement, Props>(
     return (
       <S.Wrapper>
         <input
+          className="uikit-input"
           id={id}
           ref={ref}
           type="checkbox"
