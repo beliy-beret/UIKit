@@ -163,9 +163,15 @@ export const SelectWithSearch = <T extends OptionType>({
         ref={optionsRef}
         style={{ width: "100%" }}
       >
-        {loading ? (
-          <Option>Загрузка...</Option>
-        ) : (
+        {loading && !!value && <Option>Загрузка...</Option>}
+
+        {!loading && !!value && !options.length && (
+          <Option>Ничего не найдено</Option>
+        )}
+
+        {!loading &&
+          !!value &&
+          !!options.length &&
           options.map((option, index) => (
             <Option
               key={option.value}
@@ -179,8 +185,7 @@ export const SelectWithSearch = <T extends OptionType>({
             >
               {renderOption ? renderOption(option) : option.label}
             </Option>
-          ))
-        )}
+          ))}
       </OptionsBox>
     </S.Wrapper>
   );

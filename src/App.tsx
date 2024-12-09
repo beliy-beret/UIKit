@@ -42,7 +42,9 @@ function App() {
   const [selectWithSearchValue, setSelectWithSearchValue] = useState("");
   const filteredOptions = useMemo(() => {
     if (!search) return options;
-    return options.filter((option) => option.label.includes(search));
+    return options.filter((option) =>
+      option.label.toLowerCase().includes(search.toLowerCase()),
+    );
   }, [search]);
 
   const [defaultSelectValue, setDefaultSeletValue] = useState(options[0].value);
