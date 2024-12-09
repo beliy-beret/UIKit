@@ -12,6 +12,7 @@ export const CustomSelect = styled.div<Props>`
   position: relative;
 
   input.uikit-select-input {
+    outline: none;
     background-color: ${Colors.gray["10"]};
     border-radius: 4px;
     width: 100%;
@@ -19,12 +20,32 @@ export const CustomSelect = styled.div<Props>`
     color: #1d1c29;
     border: 1px solid transparent;
     font-size: 14px;
+    cursor: pointer;
     ${({ $error }) => $error && `border-color: ${Colors.red["400"]}`};
 
     &:focus-visible {
-      outline: none;
       ${({ $error }) =>
-        !$error && `box-shadow: 0 0 0 3px ${Colors.blue["200"]};`};
+        !$error &&
+        `box-shadow: 0 0 0 3px ${Colors.blue["200"]}; border-color: ${Colors.blue["400"]}`};
+    }
+
+    @media (hover: hover) {
+      &:hover:not(:disabled) {
+        background-color: ${Colors.blueGray["25"]};
+        color: ${Colors.blue["500"]};
+      }
+    }
+
+    &:disabled {
+      border-color: ${Colors.blueGray["300"]};
+      color: ${Colors.blueGray["300"]};
+      background-color: ${Colors.blueGray["50"]};
+      cursor: auto;
+
+      & + span.chevron {
+        cursor: auto;
+        pointer-events: none;
+      }
     }
   }
 
