@@ -6,7 +6,6 @@ type InputProps = {
 };
 
 export const Input = styled.input<InputProps>`
-  width: 100%;
   padding: 6px 14px;
   border: 1px solid #b0afc2;
   border-radius: 8px;
@@ -14,10 +13,11 @@ export const Input = styled.input<InputProps>`
   color: ${Colors.blueGray["600"]};
   font-size: 14px;
   line-height: 19px;
-  ${({ $error }) => $error && `border: 1px solid ${Colors.red["400"]}`};
+  ${({ $error }) => $error && `border-color: ${Colors.red["400"]}`};
+  outline: none;
+  box-shadow: none;
 
   &:focus {
-    outline: none;
     box-shadow: 0 0 0 1px ${Colors.blue["500"]};
   }
 
