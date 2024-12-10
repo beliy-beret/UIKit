@@ -1,53 +1,11 @@
 import styled from "styled-components";
 import { Colors } from "../../colors.ts";
 
-type Props = {
-  $error?: boolean;
-};
-
-export const CustomSelect = styled.div<Props>`
+export const CustomSelect = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   position: relative;
-
-  input.uikit-select-input {
-    outline: none;
-    background-color: ${Colors.gray["10"]};
-    border-radius: 4px;
-    width: 100%;
-    padding: 8px 38px 8px 16px;
-    color: #1d1c29;
-    border: 1px solid transparent;
-    font-size: 14px;
-    cursor: pointer;
-    ${({ $error }) => $error && `border-color: ${Colors.red["400"]}`};
-
-    &:focus-visible {
-      ${({ $error }) =>
-        !$error &&
-        `box-shadow: 0 0 0 3px ${Colors.blue["200"]}; border-color: ${Colors.blue["400"]}`};
-    }
-
-    @media (hover: hover) {
-      &:hover:not(:disabled) {
-        background-color: ${Colors.blueGray["25"]};
-        color: ${Colors.blue["500"]};
-      }
-    }
-
-    &:disabled {
-      border-color: ${Colors.blueGray["300"]};
-      color: ${Colors.blueGray["300"]};
-      background-color: ${Colors.blueGray["50"]};
-      cursor: auto;
-
-      & + span.chevron {
-        cursor: auto;
-        pointer-events: none;
-      }
-    }
-  }
 
   .chevron {
     width: fit-content;
@@ -72,6 +30,46 @@ export const CustomSelect = styled.div<Props>`
   &[aria-expanded="true"] {
     .chevron {
       rotate: 180deg;
+    }
+  }
+
+  input.uikit-select-input {
+    outline: none;
+    background-color: ${Colors.gray["10"]};
+    border-radius: 4px;
+    width: 100%;
+    padding: 8px 38px 8px 16px;
+    color: #1d1c29;
+    border: 1px solid transparent;
+    font-size: 14px;
+    cursor: pointer;
+
+    &[aria-invalid] {
+      border-color: ${Colors.red["400"]};
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px ${Colors.blue["200"]};
+      border-color: ${Colors.blue["400"]};
+    }
+
+    &:disabled {
+      border-color: ${Colors.blueGray["300"]};
+      color: ${Colors.blueGray["300"]};
+      background-color: ${Colors.blueGray["50"]};
+      cursor: auto;
+
+      & + span.chevron {
+        cursor: auto;
+        pointer-events: none;
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover:not(:disabled) {
+        background-color: ${Colors.blueGray["25"]};
+        color: ${Colors.blue["500"]};
+      }
     }
   }
 `;

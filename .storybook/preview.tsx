@@ -9,6 +9,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ margin: "24px" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default preview;

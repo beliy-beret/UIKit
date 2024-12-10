@@ -107,8 +107,9 @@ export const Select = <T extends OptionType>({
   }, []);
 
   return (
-    <S.CustomSelect aria-expanded={showDropdown} $error={error} ref={selectRef}>
+    <S.CustomSelect aria-expanded={showDropdown} ref={selectRef}>
       <input
+        aria-invalid={error}
         className="uikit-select-input"
         disabled={disabled}
         type="text"
@@ -118,6 +119,7 @@ export const Select = <T extends OptionType>({
         onClick={() => setShowDropdown(!showDropdown)}
         readOnly
       />
+
       <span className="chevron" onClick={() => setShowDropdown(!showDropdown)}>
         <svg
           width="24"
