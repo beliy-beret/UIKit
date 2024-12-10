@@ -9,7 +9,6 @@ const meta = {
   parameters: {
     layout: "standard",
   },
-  tags: ["autodocs"],
   argTypes: {},
   args: { onClick: fn() },
 } satisfies Meta<typeof Button>;
