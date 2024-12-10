@@ -1,11 +1,7 @@
 import styled from "styled-components";
 import { Colors } from "../../colors.ts";
 
-type InputProps = {
-  $error?: boolean;
-};
-
-export const Input = styled.input<InputProps>`
+export const Input = styled.input`
   padding: 6px 14px;
   border: 1px solid #b0afc2;
   border-radius: 8px;
@@ -13,15 +9,38 @@ export const Input = styled.input<InputProps>`
   color: ${Colors.blueGray["600"]};
   font-size: 14px;
   line-height: 19px;
-  ${({ $error }) => $error && `border-color: ${Colors.red["400"]}`};
   outline: none;
   box-shadow: none;
 
+  &:hover {
+    border-color: ${Colors.blue["500"]};
+  }
+
   &:focus {
-    box-shadow: 0 0 0 1px ${Colors.blue["500"]};
+    border-color: ${Colors.blueGray["300"]};
+    box-shadow: 0 0 0 3px #c2b6dc;
   }
 
   &[type="number"] {
     -moz-appearance: textfield;
+  }
+
+  &:disabled, &:disabled&[aria-invalid="true"] {
+    background-color: ${Colors.blueGray["25"]};
+    border-color: ${Colors.blueGray["300"]};
+    color: ${Colors.blueGray["300"]};
+  }
+
+  &[aria-invalid="true"] {
+    border-color: ${Colors.red["400"]};
+
+    &:hover {
+      border-color: ${Colors.red["500"]};
+    }
+
+    &:focus {
+      border-color: ${Colors.red["300"]};
+      box-shadow: 0 0 0 3px #D35148};
+    }
   }
 `;

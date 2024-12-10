@@ -7,6 +7,6 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ error = false, ...props }, ref) => {
-    return <S.Input {...props} ref={ref} $error={error} />;
+    return <S.Input {...props} ref={ref} aria-invalid={error} />;
   },
 );

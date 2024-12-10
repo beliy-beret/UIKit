@@ -1,30 +1,29 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import { Input } from "../../components";
+import { Input as Component } from "../../components";
 
 const meta = {
   title: "Example/Input",
-  component: Input,
+  component: Component,
   parameters: {
     layout: "standard",
   },
   argTypes: {},
   args: { onChange: fn() },
-} satisfies Meta<typeof Input>;
+} satisfies Meta<typeof Component>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const DefaultInput: Story = {
+export const Input: Story = {};
+
+export const WithError: Story = {
   args: {
-    placeholder: "Placeholder text",
+    error: true,
   },
 };
 
-export const WithErrorInput: Story = {
-  args: {
-    error: true,
-    placeholder: "Placeholder text",
-  },
+export const Disabled: Story = {
+  args: { disabled: true },
 };
