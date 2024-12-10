@@ -16,7 +16,7 @@ export const Option = styled.div`
 
   &[aria-disabled="true"] {
     background-color: transparent;
-    color: ${Colors.blue["300"]} !important;
+    color: ${Colors.blueGray["300"]} !important;
     cursor: auto;
   }
 
@@ -26,7 +26,7 @@ export const Option = styled.div`
   }
 
   @media (hover: hover) {
-    &:hover {
+    &:hover:not([aria-disabled="true"]) {
       color: ${Colors.blue["600"]};
       background-color: ${Colors.blueGray["25"]};
     }

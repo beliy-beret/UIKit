@@ -51,6 +51,11 @@ export const CustomSelect = styled.div`
     &:focus {
       box-shadow: 0 0 0 3px ${Colors.blue["200"]};
       border-color: ${Colors.blue["400"]};
+
+      &[aria-invalid] {
+        border-color: ${Colors.red["300"]};
+        box-shadow: 0 0 0 3px #d35148;
+      }
     }
 
     &:disabled {

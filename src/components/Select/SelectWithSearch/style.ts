@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 
   input {
     padding-right: 38px;
+    width: 100%;
   }
 
   .reset-button {
