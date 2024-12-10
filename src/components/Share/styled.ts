@@ -43,6 +43,10 @@ export const Popup = styled.div`
     }
   }
 
+  &[aria-expanded="true"] {
+    display: flex;
+  }
+
   @keyframes show {
     from {
       opacity: 0;

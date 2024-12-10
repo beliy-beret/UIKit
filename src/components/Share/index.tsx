@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { useState } from "react";
 import Telegram from "./images/share-tg.svg";
 import VK from "./images/share-vk.svg";
 import Link from "./images/share.svg";
@@ -6,9 +6,11 @@ import * as S from "./styled";
 
 type Props = {
   shareUrl: string;
+  className?: string;
 };
 
-export const Share = ({ shareUrl }: Props) => {
+export const Share = ({ shareUrl, className = "" }: Props) => {
+  const [open, setOpen] = useState(false);
   const link = shareUrl.startsWith("http")
     ? shareUrl
     : `${window.location.origin}${shareUrl}`;
@@ -21,15 +23,12 @@ export const Share = ({ shareUrl }: Props) => {
 
   const shareLink = (value: string) => {
     window.open(value, "_blank", "noopener, noreferer");
-  };
-
-  const stopEvent = (event: MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
+    setOpen(false);
   };
 
   return (
-    <S.Share onClick={stopEvent}>
-      <S.Popup>
+    <S.Share className={className}>
+      <S.Popup aria-expanded={open}>
         <button
           className="link"
           onClick={() => shareLink(`https://t.me/share/url?url=${link}`)}
@@ -50,7 +49,7 @@ export const Share = ({ shareUrl }: Props) => {
         </button>
       </S.Popup>
 
-      <button className="share-button">
+      <button className="share-button" onClick={() => setOpen(!open)}>
         <svg
           width="16"
           height="16"

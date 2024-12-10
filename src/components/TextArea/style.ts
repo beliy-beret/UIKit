@@ -48,6 +48,11 @@ export const TextArea = styled.textarea`
   resize: none;
   border: none;
 
+  &:disabled {
+    background-color: ${Colors.blueGray["25"]};
+    color: ${Colors.blueGray["300"]};
+  }
+
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
