@@ -1,23 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import { Button } from "../../components";
+import { Button as Component } from "../../components";
 
 const meta = {
   title: "Example/Button",
-  component: Button,
+  component: Component,
   parameters: {
     layout: "standard",
   },
   argTypes: {},
-  args: { onClick: fn() },
-} satisfies Meta<typeof Button>;
+  args: { onClick: fn(), children: "Button component" },
+} satisfies Meta<typeof Component>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Button: Story = {};
+
+export const DisabledButton: Story = {
   args: {
-    children: "Primary",
+    disabled: true,
   },
 };

@@ -106,6 +106,7 @@ export const Button = styled.button<ButtonProps>`
     
     &:disabled {
       border-color: ${Colors.blueGray["300"]};
+      background-color: transparent;
     }
         
   `};
@@ -124,6 +125,11 @@ export const Button = styled.button<ButtonProps>`
       outline: none;
       box-shadow: inset 0 0 0 3px ${ColorPalette[$design]["200"]};      
       color: ${ColorPalette[$design]["500"]};             
+    }
+    
+    &:disabled {
+      border-color: transparent;
+      background-color: transparent;
     }
 
     @media (hover: hover) {

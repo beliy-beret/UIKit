@@ -4,7 +4,13 @@ import { ButtonDesign, ButtonVariant } from "./types.ts";
 
 type Props = Pick<
   ComponentProps<"button">,
-  "children" | "className" | "type" | "style" | "onClick" | "onKeyDown"
+  | "children"
+  | "className"
+  | "type"
+  | "style"
+  | "onClick"
+  | "onKeyDown"
+  | "disabled"
 > & {
   variant?: ButtonVariant;
   design?: ButtonDesign;
