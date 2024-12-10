@@ -6,10 +6,10 @@ type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 };
 
 export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
-  ({ error, tabIndex = 0, ...props }, ref) => {
+  ({ error, disabled, ...props }, ref) => {
     return (
-      <S.Wrapper $error={error}>
-        <S.TextArea {...props} tabIndex={tabIndex} $error={error} ref={ref} />
+      <S.Wrapper aria-invalid={error} aria-disabled={disabled}>
+        <S.TextArea {...props} disabled={disabled} ref={ref} />
       </S.Wrapper>
     );
   },

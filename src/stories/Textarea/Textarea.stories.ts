@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import { Input as Component } from "../../components";
+import { TextArea as Component } from "../../components";
 
 const meta = {
-  title: "Example/Input",
+  title: "Example/Textarea",
   component: Component,
   parameters: {
     layout: "standard",
@@ -16,7 +16,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Input: Story = {};
+export const Textarea: Story = {};
 
 export const WithError: Story = {
   args: {
@@ -33,9 +33,9 @@ export const WithPlaceholder: Story = {
 };
 
 export const WithValue: Story = {
-  args: { value: "Input value" },
+  args: { value: "Textarea value" },
 };
 
 export const WithDisabledValue: Story = {
-  args: { value: "Input value", disabled: true },
+  args: { value: "Textarea value", disabled: true },
 };
