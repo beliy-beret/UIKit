@@ -1,6 +1,6 @@
 import { ComponentProps } from '../../../node_modules/react';
 import { ButtonDesign, ButtonVariant } from './types.ts';
-type Props = Pick<ComponentProps<"button">, "children" | "className" | "type" | "style" | "onClick" | "onKeyDown"> & {
+type Props = Pick<ComponentProps<"button">, "children" | "className" | "type" | "style" | "onClick" | "onKeyDown" | "disabled"> & {
     variant?: ButtonVariant;
     design?: ButtonDesign;
 };
