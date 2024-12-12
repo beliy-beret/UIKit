@@ -42,6 +42,8 @@ export const Wrapper = styled.div`
     height: 0;
     border: none !important;
     outline: none !important;
+    overflow: hidden;
+    appearance: none;
   }
 
   input:checked.uikit-input + ${CheckBox} {
