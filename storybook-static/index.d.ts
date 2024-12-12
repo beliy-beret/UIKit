@@ -8,3 +8,4 @@ export { Input } from './Input';
 export { Link } from './Link';
 export { Badge } from './Badges';
 export { Share } from './Share';
+export { Pagination } from './Pagination';
