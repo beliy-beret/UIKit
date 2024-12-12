@@ -9,3 +9,5 @@ export { Link } from './Link';
 export { Badge } from './Badges';
 export { Share } from './Share';
 export { Pagination } from './Pagination';
+export { FormSubmitNotification } from './FormSubmitNotification';
+export { ContentContainer } from './ContentContainer';
