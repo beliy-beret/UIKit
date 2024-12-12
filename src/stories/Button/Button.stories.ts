@@ -9,7 +9,18 @@ const meta = {
   parameters: {
     layout: "standard",
   },
-  argTypes: {},
+  argTypes: {
+    design: {
+      control: {
+        type: "select",
+      },
+    },
+    variant: {
+      control: {
+        type: "radio",
+      },
+    },
+  },
   args: { onClick: fn(), children: "Button component" },
 } satisfies Meta<typeof Component>;
 

@@ -2,31 +2,23 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Link as LinkComponent } from "../../components";
 
 const meta = {
-  title: "Example/Link",
+  title: "Example/Links/Link",
   component: LinkComponent,
   parameters: {
     layout: "standard",
   },
   argTypes: {
-    as: {
-      mapping: ["a", "ReactLink"],
-      control: { type: "radio" },
-    },
     design: {
-      mapping: [
-        "Informative",
-        "Body",
-        "Dangerous",
-        "Completed",
-        "Primary",
-        "Warning",
-      ],
-      control: {
-        type: "select",
-      },
+      control: { disable: true },
+    },
+    as: {
+      control: { disable: true },
+    },
+    href: {
+      control: { disable: true },
     },
   },
-  args: { children: "Link component", design: "Primary", as: "a", href: "#" },
+  args: { children: "Link component", as: "a", href: "" },
 } satisfies Meta<typeof LinkComponent>;
 
 export default meta;
@@ -34,10 +26,23 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Link: Story = {};
-
-export const ReactLink: Story = {
+export const LinkDangerous: Story = {
   args: {
-    as: "ReactLink",
-    to: "/",
+    design: "Dangerous",
+  },
+};
+export const LinkCompleted: Story = {
+  args: {
+    design: "Completed",
+  },
+};
+export const LinkPrimary: Story = {
+  args: {
+    design: "Primary",
+  },
+};
+export const LinkWarning: Story = {
+  args: {
+    design: "Warning",
   },
 };
