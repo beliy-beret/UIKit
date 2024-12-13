@@ -1,9 +1,8 @@
-import { ReactNode, CSSProperties } from '../../../node_modules/react';
-type Props = {
-    children?: ReactNode;
+import { CSSProperties, ComponentProps } from '../../../node_modules/react';
+type Props = Pick<ComponentProps<"div">, "style" | "children"> & {
+    transparent?: boolean;
     onClose?: () => void;
-    style?: CSSProperties;
     wrapperStyle?: CSSProperties;
 };
-export declare const Modal: ({ children, onClose, style, wrapperStyle }: Props) => import('../../../node_modules/react').ReactPortal;
+export declare const Modal: ({ children, onClose, style, wrapperStyle, transparent, }: Props) => import("react/jsx-runtime").JSX.Element;
 export {};
