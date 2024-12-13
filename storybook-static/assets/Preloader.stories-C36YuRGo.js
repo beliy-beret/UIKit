@@ -1,4 +1,4 @@
-import{j as r}from"./jsx-runtime-CkxqCPlQ.js";import{M as d}from"./index-BFfZl-ZO.js";import{S as i}from"./index-B1Pu1fsx.js";import{d as n}from"./styled-components.browser.esm-CW2lnlac.js";import{C as m}from"./colors-BfrfeCNN.js";import"./index-DJO9vBfz.js";const p=n.div`
+import{j as r}from"./jsx-runtime-CkxqCPlQ.js";import{M as d}from"./index-BFfZl-ZO.js";import{S as i}from"./index-Die5DRX8.js";import{d as n}from"./styled-components.browser.esm-CW2lnlac.js";import{C as m}from"./colors-BfrfeCNN.js";import"./index-DJO9vBfz.js";const p=n.div`
   * {
     padding: 0;
     margin: 0;
