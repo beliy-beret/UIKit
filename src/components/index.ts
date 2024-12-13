@@ -13,3 +13,4 @@ export { FormSubmitNotification } from "./FormSubmitNotification";
 export { ContentContainer } from "./ContentContainer";
 export { Spinner } from "./Spiner";
 export { Accordion } from "./Accardion";
+export { Preloader } from "./Preloader";

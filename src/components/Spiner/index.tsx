@@ -6,7 +6,7 @@ type Props = {
 
 const sizes = {
   small: 24,
-  medium: 36,
+  medium: 32,
   large: 48,
 };
 
