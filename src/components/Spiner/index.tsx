@@ -10,35 +10,36 @@ const sizes = {
   large: 48,
 };
 
-export const Spinner = ({ size = "small" }: Props) => {
-  return (
-    <S.Spinner
-      width={sizes[size]}
-      height={sizes[size]}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+export const Spinner = ({ size = "small" }: Props) => (
+  <S.Spinner
+    width={sizes[size]}
+    height={sizes[size]}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <clipPath id="clip">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M1.60779 6.00003C-1.70592 11.7395 0.260579 19.0786 6.00009 22.3923C11.7396 25.706 19.0787 23.7395 22.3924 18C25.7061 12.2605 23.7396 4.92144 18.0001 1.60773C12.2606 -1.70598 4.92149 0.26052 1.60779 6.00003ZM3.33984 7.00003C0.578412 11.783 2.21716 17.8989 7.00009 20.6603C11.783 23.4217 17.8989 21.783 20.6603 17C23.4218 12.2171 21.783 6.1012 17.0001 3.33978C12.2172 0.578354 6.10126 2.21711 3.33984 7.00003Z"
-        fill="url(#paint0_angular_1351_36066)"
+        d="M18.0013 22.3923C23.7408 19.0786 25.7073 11.7395 22.3936 6.00003C19.0799 0.26052 11.7408 -1.70598 6.00131 1.60773C0.261802 4.92144 -1.7047 12.2605 1.60901 18C4.92272 23.7395 12.2618 25.706 18.0013 22.3923ZM17.0013 20.6603C21.7842 17.8989 23.423 11.783 20.6616 7.00003C17.9001 2.21711 11.7842 0.578354 7.00131 3.33978C2.21839 6.1012 0.579636 12.2171 3.34106 17C6.10248 21.783 12.2184 23.4217 17.0013 20.6603Z"
+        fill="url(#paint0_angular_1351_36135)"
       />
-      <defs>
-        <radialGradient
-          id="paint0_angular_1351_36066"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(12.0001 12) rotate(120) scale(12)"
-        >
-          <stop stopColor="#1B4DCB" stopOpacity="0" />
-          <stop offset="0.0001" stopColor="#1B4DCB" stopOpacity="0" />
-          <stop offset="1" stopColor="#1B4DCB" />
-        </radialGradient>
-      </defs>
-    </S.Spinner>
-  );
-};
+    </clipPath>
+    <foreignObject
+      id="paint0_angular_263_94"
+      x={0}
+      y={0}
+      width={40}
+      height={40}
+      clipPath="url(#clip)"
+    >
+      <div
+        style={{
+          backgroundImage: "conic-gradient(from 45deg, white, #1B4DCB)",
+          width: 24,
+          height: 24,
+        }}
+      />
+    </foreignObject>
+  </S.Spinner>
+);
