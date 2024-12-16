@@ -4,7 +4,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/beliy-beret"
   },
-  "version": "0.0.20",
+  "version": "0.0.21",
   "type": "module",
   "peerDependencies": {
     "react": "^18.2.0",
