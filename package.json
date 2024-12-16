@@ -1,5 +1,6 @@
 {
   "name": "@beliy-beret/uikit",
+  "private": false,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/beliy-beret"
   },
