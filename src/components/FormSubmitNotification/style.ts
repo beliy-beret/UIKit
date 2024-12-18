@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../colors";
+import { theme } from "../theme.ts";
 
 export const Notification = styled.div`
   padding: 24px;
@@ -18,21 +19,19 @@ export const Notification = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 18px;
-  font-weight: 500;
+  ${theme.text.font18.medium};
   margin-block: 4px;
   text-align: center;
 `;
 
 export const Description = styled.p`
-  font-size: 14px;
+  ${theme.text.font14.regular};
   color: ${Colors.blueGray["600"]};
   text-align: center;
   margin-bottom: 8px;
 
   .accent {
-    font-size: 14px;
-    font-weight: 700;
+    ${theme.text.font14.bold};
     color: ${Colors.blue["400"]};
     cursor: pointer;
   }

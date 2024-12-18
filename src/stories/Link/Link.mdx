@@ -6,13 +6,10 @@ import * as LinkStories from './Link.stories';
 
 # Link
 
-Компонент ссылка. Можно использовать как стандартный тег "а", так и компонент "Link" из react-router.
-В качестве параметров принимает все атрибуты тега "а" и дополнительные и опцинальные параметры "design" и "as".
+Компонент ссылка.
+В качестве параметров принимает все атрибуты тега "а" и опцинальный параметр "design".
 
-<font color='red'>as</font> - "a" | "ReactLink" по умолчанию применяется "а".\
 <font color='red'>design</font> - "Informative" | "Body" | "Dangerous" | "Completed" | "Primary" | "Warning" по умолчанию применяется "Body".
-
-Если используешь <font color='orange'>as="ReactLink"</font> , параметр "href" нужно заменить на "to".
 
 ## design="Body"
 <Canvas of={LinkStories.Link} />

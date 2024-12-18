@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../../colors.ts";
+import { theme } from "../../theme.ts";
 
 export const CustomSelect = styled.div`
   width: 100%;
@@ -34,6 +35,7 @@ export const CustomSelect = styled.div`
   }
 
   input.uikit-select-input {
+    ${theme.text.font14.regular};
     outline: none;
     background-color: ${Colors.gray["10"]};
     border-radius: 4px;
@@ -41,7 +43,6 @@ export const CustomSelect = styled.div`
     padding: 8px 38px 8px 16px;
     color: #1d1c29;
     border: 1px solid transparent;
-    font-size: 14px;
     cursor: pointer;
 
     &[aria-invalid] {

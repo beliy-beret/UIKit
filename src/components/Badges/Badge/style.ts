@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { BadgeDesign } from "./types.ts";
 import { ColorPalette } from "../../colors.ts";
+import { theme } from "../../theme";
 
 type Props = {
   $design: BadgeDesign;
 };
 
 export const StyledBadge = styled.div<Props>`
+  ${theme.text.font12.medium};
   padding: 4px 8px;
   border-radius: 200px;
   display: flex;

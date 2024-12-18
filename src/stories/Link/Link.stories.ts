@@ -11,14 +11,11 @@ const meta = {
     design: {
       control: { disable: true },
     },
-    as: {
-      control: { disable: true },
-    },
     href: {
       control: { disable: true },
     },
   },
-  args: { children: "Link component", as: "a", href: "" },
+  args: { children: "Link component", href: "" },
 } satisfies Meta<typeof LinkComponent>;
 
 export default meta;

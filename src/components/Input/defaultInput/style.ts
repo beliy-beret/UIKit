@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { Colors } from "../../colors.ts";
+import { theme } from "../../theme.ts";
 
 export const Input = styled.input`
+  ${theme.text.font14.regular};
   padding: 6px 14px;
   border: 1px solid #b0afc2;
   border-radius: 8px;
   background-color: ${Colors.white};
   color: ${Colors.blueGray["600"]};
-  font-size: 14px;
-  line-height: 19px;
   outline: none;
   box-shadow: none;
 

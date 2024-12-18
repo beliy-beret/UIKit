@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../colors";
+import { theme } from "../theme.ts";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -40,11 +41,10 @@ export const Wrapper = styled.div`
 `;
 
 export const TextArea = styled.textarea`
+  ${theme.text.font14.regular};
   padding: 6px 14px;
   background-color: ${Colors.white};
   color: ${Colors.blueGray["600"]};
-  font-size: 14px;
-  line-height: 19px;
   resize: none;
   border: none;
 

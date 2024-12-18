@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../colors.ts";
+import { theme } from "../theme.ts";
 
 export const Popup = styled.div`
   width: max-content;
@@ -18,6 +19,7 @@ export const Popup = styled.div`
   animation: 200ms show forwards ease-in-out;
 
   button.link {
+    ${theme.text.font14.regular};
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -27,9 +29,6 @@ export const Popup = styled.div`
     text-align: start;
     height: 36px;
     padding-inline: 16px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 19px;
     background-color: ${Colors.blueGray["10"]};
 
     img {

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ColorPalette, Colors } from "../colors.ts";
 import { ButtonDesign, ButtonVariant } from "./types.ts";
+import { theme } from "../theme.ts";
 
 type ButtonProps = {
   $variant: ButtonVariant;
@@ -8,11 +9,11 @@ type ButtonProps = {
 };
 
 export const Button = styled.button<ButtonProps>`
+  ${theme.text.font14.medium};
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
-  font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
   border: none;

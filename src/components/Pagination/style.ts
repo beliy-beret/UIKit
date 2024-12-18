@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../colors";
+import { theme } from "../theme.ts";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -26,8 +27,7 @@ export const Wrapper = styled.div`
 `;
 
 export const PaginationButton = styled.button`
-  font-size: 14px;
-  font-weight: 500;
+  ${theme.text.font14.medium};
   border: none;
   cursor: pointer;
   color: ${Colors.blueGray["800"]};

@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { Colors } from "../../../colors.ts";
+import { theme } from "../../../theme.ts";
 
 export const Option = styled.div`
+  ${theme.text.font14.regular};
   display: flex;
   align-items: center;
   padding: 8px 16px;
   color: ${Colors.blueGray["800"]};
-  font-size: 14px;
   cursor: pointer;
 
   &[aria-selected="true"] {

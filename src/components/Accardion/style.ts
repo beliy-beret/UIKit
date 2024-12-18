@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { Colors } from "../colors.ts";
+import { theme } from "../theme.ts";
 
 export const Title = styled.div`
+  ${theme.text.font16.medium};
   border: none;
   background-color: transparent;
   padding: 8px 16px;
   display: flex;
   gap: 16px;
   align-items: center;
-  font-weight: 500;
-  font-size: 16px;
   cursor: pointer;
   color: ${Colors.blueGray["800"]};
 
@@ -27,8 +27,8 @@ export const Description = styled.div`
   height: 0;
 
   p[aria-label="accordion-description"] {
+    ${theme.text.font14.regular}
     padding: 4px 16px 8px;
-    font-size: 14px;
     color: ${Colors.blueGray["500"]};
     translate: 0 -100%;
     transition: translate 200ms linear;
