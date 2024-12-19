@@ -1,5 +1,6 @@
 import { ChangeEvent, forwardRef, KeyboardEvent } from "react";
 import * as S from "./style";
+import { CheckBoxSizeType } from "./types.ts";
 
 type Props1 = {
   id: string;
@@ -8,6 +9,7 @@ type Props1 = {
   className?: string;
   disabled?: boolean;
   tabIndex?: number;
+  size?: CheckBoxSizeType;
 };
 
 type Props2 = {
@@ -18,12 +20,23 @@ type Props2 = {
   onToggleChecked?: (checked: boolean) => void;
   disabled?: boolean;
   tabIndex?: number;
+  size?: CheckBoxSizeType;
 };
 
 type Props = Props1 | Props2;
 
 export const CheckBox = forwardRef<HTMLInputElement, Props>(
-  ({ className, id, checked, onToggleChecked, ...props }: Props, ref) => {
+  (
+    {
+      className,
+      id,
+      checked,
+      onToggleChecked,
+      size = "small",
+      ...props
+    }: Props,
+    ref,
+  ) => {
     const checkedHandler = (event: ChangeEvent<HTMLInputElement>) => {
       if (onToggleChecked) {
         onToggleChecked(event.currentTarget.checked);
@@ -48,7 +61,7 @@ export const CheckBox = forwardRef<HTMLInputElement, Props>(
           onKeyDown={onKeyDownHandler}
           onChange={checkedHandler}
         />
-        <S.CheckBox htmlFor={id} className={className}>
+        <S.CheckBox $size={size} htmlFor={id} className={className}>
           <svg
             width="10"
             height="9"

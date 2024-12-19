@@ -8,11 +8,19 @@ const meta = {
   parameters: {
     layout: "standard",
   },
-  argTypes: {},
+  argTypes: {
+    size: {
+      options: ["small", "big"],
+      control: {
+        type: "radio",
+      },
+    },
+  },
   args: { onToggleChecked: fn(), checked: false },
 } satisfies Meta<typeof Component>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const UnChecked: Story = {
@@ -40,5 +48,37 @@ export const DisableWithChecked: Story = {
     id: "disabled_checked",
     disabled: true,
     checked: true,
+  },
+};
+
+export const BigUnChecked: Story = {
+  args: {
+    id: "unChecked",
+    size: "big",
+  },
+};
+
+export const BigChecked: Story = {
+  args: {
+    id: "checked",
+    checked: true,
+    size: "big",
+  },
+};
+
+export const BigDisabled: Story = {
+  args: {
+    id: "disabled",
+    disabled: true,
+    size: "big",
+  },
+};
+
+export const BigDisableWithChecked: Story = {
+  args: {
+    id: "disabled_checked",
+    disabled: true,
+    checked: true,
+    size: "big",
   },
 };

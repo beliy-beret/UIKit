@@ -1,16 +1,18 @@
 import styled from "styled-components";
 import { Colors } from "../colors";
+import { CheckBoxSizeType, checkboxSizes } from "./types.ts";
 
 type Props = {
   $isChecked?: boolean;
   $isDisabled?: boolean;
+  $size: CheckBoxSizeType;
 };
 
 export const CheckBox = styled.label<Props>`
   display: grid;
   place-content: center;
-  width: 16px;
-  height: 16px;
+  aspect-ratio: 1;
+  width: ${({ $size }) => `${checkboxSizes[$size]}px`};
   border-radius: 4px;
   border: 1px solid ${Colors.blueGray["300"]};
   background-color: ${Colors.blueGray["25"]};
@@ -25,6 +27,8 @@ export const CheckBox = styled.label<Props>`
   }
 
   svg {
+    width: ${({ $size }) => ($size === "small" ? `10px` : "12px")};
+    height: ${({ $size }) => ($size === "small" ? `9px` : "10px")};
     visibility: hidden;
   }
 `;
