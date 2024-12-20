@@ -25,9 +25,7 @@ export const Avatar = styled.div<AvatarProps>`
 
   p {
     margin: 0;
-    ${({ $variant }) =>
-      $variant === "Small" &&
-      `${theme.text.font12.semibold}; translate: 0 2px`};
+    ${({ $variant }) => $variant === "Small" && theme.text.font12.semibold};
     ${({ $variant }) => $variant === "Medium" && theme.text.font20.semibold};
     ${({ $variant }) =>
       $variant === "Large" &&
