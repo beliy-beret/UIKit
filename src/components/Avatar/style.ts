@@ -14,7 +14,7 @@ export const Avatar = styled.div<AvatarProps>`
   color: #f7faff;
   overflow: hidden;
 
-  ${({ $variant }) => $variant === "Small" && "width: 16px;"}
+  ${({ $variant }) => $variant === "Small" && "width: 24px;"}
   ${({ $variant }) => $variant === "Medium" && "width: 40px;"}
   ${({ $variant }) => $variant === "Large" && "width: 80px;"}
   
