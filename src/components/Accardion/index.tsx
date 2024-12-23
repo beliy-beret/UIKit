@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import * as S from "./style";
 
 type Props = {
   open?: boolean;
   title: string;
-  description: string;
+  children: ReactNode | string;
   className?: string;
   id?: string;
 };
 
 export const Accordion = ({
-  description,
   open = false,
   title,
   className = "",
   id,
+  children,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(open);
 
@@ -40,7 +40,11 @@ export const Accordion = ({
       </S.Title>
 
       <S.Description>
-        <p aria-label="accordion-description">{description}</p>
+        {typeof children === "string" ? (
+          <p aria-label="accordion-description">{children}</p>
+        ) : (
+          <div aria-label="accordion-description">{children}</div>
+        )}
       </S.Description>
     </S.Accordion>
   );

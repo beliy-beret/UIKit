@@ -33,6 +33,12 @@ export const Description = styled.div`
     translate: 0 -100%;
     transition: translate 200ms linear;
   }
+
+  div[aria-label="accordion-description"] {
+    padding: 4px 16px 8px;
+    translate: 0 -100%;
+    transition: translate 200ms linear;
+  }
 `;
 
 export const Accordion = styled.article`
@@ -47,6 +53,10 @@ export const Accordion = styled.article`
       height: auto;
 
       p[aria-label="accordion-description"] {
+        translate: 0 0;
+      }
+
+      div[aria-label="accordion-description"] {
         translate: 0 0;
       }
     }
