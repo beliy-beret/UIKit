@@ -1,5 +1,0 @@
-import{j as t}from"./jsx-runtime-CkxqCPlQ.js";import{useMDXComponents as e}from"./index-BrnU7xv7.js";import{ae as i}from"./index-DBvwkAhw.js";import{C as m}from"./ContentContainer.stories-D8X36rMc.js";import"./index-DJO9vBfz.js";import"./iframe-C67fnP1O.js";import"../sb-preview/runtime.js";import"./index-DJdX7xnk.js";import"./index-j_8AUxV0.js";import"./index-DrFu-skq.js";import"./styled-components.browser.esm-CW2lnlac.js";function r(o){const n={br:"br",h1:"h1",p:"p",...e(),...o.components};return t.jsxs(t.Fragment,{children:[t.jsx(i,{of:m}),`
-`,t.jsx(n.h1,{id:"contentcontainer",children:"ContentContainer"}),`
-`,t.jsxs(n.p,{children:["Контайнер ограничивающий ширину контента, представляет из себя html тег div с задаными отступами для разных экранов.",t.jsx(n.br,{}),`
-`,"Принимает параметры свойственные html div тегу.",t.jsx(n.br,{}),`
-`,"Максимальная ширина 1366px, по умолчанию позиционируется по центру страницы."]})]})}function C(o={}){const{wrapper:n}={...e(),...o.components};return n?t.jsx(n,{...o,children:t.jsx(r,{...o})}):r(o)}export{C as default};
