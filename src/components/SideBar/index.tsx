@@ -1,15 +1,23 @@
 import { Button } from "../Button";
 import * as S from "./style";
-import { NavItemProps, SideBarProps, UserProps } from "./types.ts";
+import { NavItemProps, SideBarProps } from "./types.ts";
 import { User } from "./User";
 import { NavLink } from "react-router";
 
-export const SideBar = ({ children, title, logout }: SideBarProps) => {
+export const SideBar = ({
+  children,
+  title,
+  logout,
+  ...userProps
+}: SideBarProps) => {
   return (
     <S.Sidebar>
       <h2 className="sidebar-title">{title}</h2>
+      <User {...userProps} />
+
       {children}
-      <div>
+
+      <div className="logout-button">
         <Button variant="Secondary" design="Body" onClick={logout}>
           <svg
             width={16}
@@ -52,8 +60,4 @@ SideBar.Link = ({ children, to }: NavItemProps) => {
       children={children}
     />
   );
-};
-
-SideBar.User = function (props: UserProps) {
-  return <User {...props} />;
 };

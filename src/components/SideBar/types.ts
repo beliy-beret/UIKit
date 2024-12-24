@@ -1,15 +1,15 @@
 import { ReactNode } from "react";
 
-export type SideBarProps = {
+export type UserProps = {
+  userName: string;
+  userRole?: string;
+  userImgSrc?: string;
+};
+
+export type SideBarProps = UserProps & {
   title: string;
   children: ReactNode;
   logout: () => void;
-};
-
-export type UserProps = {
-  name: string;
-  role?: string;
-  imgSrc?: string;
 };
 
 export type NavItemProps = {

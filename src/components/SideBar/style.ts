@@ -1,32 +1,39 @@
 import styled from "styled-components";
 import { User } from "./User/style.ts";
 import { theme } from "../theme.ts";
+import { Colors } from "../colors.ts";
 
 export const Sidebar = styled.div`
   background-color: #ffffff;
   padding: 24px;
-  width: max-content;
+  width: 100%;
   border-radius: 12px;
 
-  button {
-    width: 100%;
-    margin-top: 8px;
-    align-items: unset;
-    justify-content: start;
-    gap: 8px;
-    background-color: #ffffff;
+  .logout-button {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid ${Colors.blueGray["100"]};
 
-    svg {
-      path {
-        fill: currentColor;
+    button {
+      width: 100%;
+      align-items: unset;
+      justify-content: start;
+      gap: 8px;
+      background-color: #ffffff;
+
+      svg {
+        path {
+          fill: currentColor;
+        }
       }
-    }
 
-    ${theme.text.font14.medium};
+      ${theme.text.font14.medium};
+    }
   }
 
   .sidebar-title {
     ${theme.header.font20.bold};
+    margin: 0;
   }
 
   .link {
@@ -57,6 +64,7 @@ export const Sidebar = styled.div`
 
   ${User} {
     margin-top: 16px;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
+    padding-bottom: 12px;
   }
 `;

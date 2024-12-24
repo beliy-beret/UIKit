@@ -7,43 +7,34 @@ const meta = {
   component: MyComponent,
   parameters: {
     layout: "standard",
+    backgrounds: {
+      default: "dark",
+    },
   },
+  tags: ["autodocs"],
   args: {
     title: "Личный кабинет",
     children: "",
     logout: fn(),
+    userRole: "Самозанятый",
+    userImgSrc: "",
+    userName: "Фамилия Имя Отчество",
   },
 } satisfies Meta<typeof MyComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const user = {
-  name: "Фамилия Имя Отчество",
-  role: "Самозанятый",
-};
-
-export const SidebarWithUserInfo: Story = {
+export const Sidebar: Story = {
   render: function Render(args) {
     return (
-      <MyComponent {...args}>
-        <MyComponent.User {...user} />
-        <MyComponent.Link to={""}>Profile</MyComponent.Link>
-        <MyComponent.Link to={"/settings"}>Settings</MyComponent.Link>
-        <MyComponent.Link to={"/messages"}>Messages</MyComponent.Link>
-      </MyComponent>
-    );
-  },
-};
-
-export const SidebarWithoutUserInfo: Story = {
-  render: function Render(args) {
-    return (
-      <MyComponent {...args}>
-        <MyComponent.Link to={""}>Profile</MyComponent.Link>
-        <MyComponent.Link to={"/settings"}>Settings</MyComponent.Link>
-        <MyComponent.Link to={"/messages"}>Messages</MyComponent.Link>
-      </MyComponent>
+      <div style={{ width: "300px" }}>
+        <MyComponent {...args}>
+          <MyComponent.Link to={""}>Profile</MyComponent.Link>
+          <MyComponent.Link to={"/settings"}>Settings</MyComponent.Link>
+          <MyComponent.Link to={"/messages"}>Messages</MyComponent.Link>
+        </MyComponent>
+      </div>
     );
   },
 };
