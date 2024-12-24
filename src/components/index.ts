@@ -17,3 +17,4 @@ export { Preloader } from "./Preloader";
 export { Radio } from "./Radio";
 export { Portals, Logos } from "./Portals";
 export { PortalBox } from "./PortalsBox";
+export { SideBar } from "./SideBar";
