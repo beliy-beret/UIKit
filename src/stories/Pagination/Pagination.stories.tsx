@@ -32,7 +32,22 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Pagination: Story = {
+export const WithoutArrowButton: Story = {
+  render: function Render(args) {
+    const [, updateArgs] = useArgs();
+
+    function onChange(page: number) {
+      updateArgs({ currentPage: page });
+    }
+
+    return <PaginationComponent {...args} onChangePage={onChange} />;
+  },
+};
+
+export const WithArrowButton: Story = {
+  args: {
+    withArrow: true,
+  },
   render: function Render(args) {
     const [, updateArgs] = useArgs();
 

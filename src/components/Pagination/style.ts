@@ -2,23 +2,49 @@ import styled from "styled-components";
 import { Colors } from "../colors";
 import { theme } from "../theme.ts";
 
-export const Wrapper = styled.div`
+export const Pagination = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  max-width: 410px;
+  justify-content: center;
+  gap: 8px;
 
-  & > ul {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-inline: 12px;
-    justify-content: space-between;
+  button[aria-hidden="true"] {
+    display: none;
+  }
 
-    & > li {
-      list-style: none;
+  button[aria-label="button-prev"],
+  button[aria-label="button-next"] {
+    gap: 8px;
+
+    svg {
+      path {
+        fill: currentColor;
+      }
     }
+  }
+
+  button[aria-label="button-prev"] {
+    margin-right: auto;
+  }
+
+  button[aria-label="button-next"] {
+    margin-left: auto;
+  }
+`;
+
+export const List = styled.ul`
+  max-width: 410px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+
+  & > li {
+    list-style: none;
   }
 
   @media (min-width: 904px) {
