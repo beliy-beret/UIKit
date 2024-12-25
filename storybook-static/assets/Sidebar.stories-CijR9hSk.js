@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-CkxqCPlQ.js";import{f as v}from"./index-B5ZI-g0m.js";import{B as b}from"./index-YQpc0OJ6.js";import{d as x}from"./styled-components.browser.esm-CW2lnlac.js";import{C as c}from"./colors-BfrfeCNN.js";import{t as o}from"./theme-BVt_iaI7.js";import{r as u}from"./index-DJO9vBfz.js";import{A as j}from"./index-DqyrWIfz.js";import{N as k}from"./chunk-7R3XDUXW-BHkmpd02.js";const h=x.div`
+import{j as e}from"./jsx-runtime-CkxqCPlQ.js";import{f as v}from"./index-B5ZI-g0m.js";import{B as b}from"./index-YQpc0OJ6.js";import{d as x}from"./styled-components.browser.esm-CW2lnlac.js";import{C as c}from"./colors-BfrfeCNN.js";import{t as o}from"./theme-BVt_iaI7.js";import{r as u}from"./index-DJO9vBfz.js";import{A as j}from"./index-DqyrWIfz.js";import{N as k}from"./chunk-K6AXKMTT-CxKiQ65n.js";const h=x.div`
   display: grid;
   gap: 8px;
   grid-template-columns: auto 1fr;
