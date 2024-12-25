@@ -19,3 +19,4 @@ export { Portals, Logos } from './Portals';
 export { PortalBox } from './PortalsBox';
 export { SideBar } from './SideBar';
 export { Tabs } from './Tabs';
+export { Breadcrumbs } from './Breadcrumbs';

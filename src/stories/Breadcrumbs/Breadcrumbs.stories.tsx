@@ -7,6 +7,7 @@ const Item = ({ to, label }: BreadcrumbItem) => <Link to={to}>{label}</Link>;
 
 const meta = {
   title: "Example/Breadcrumbs",
+  tags: ["autodocs"],
   component: Component,
   parameters: {
     layout: "standard",

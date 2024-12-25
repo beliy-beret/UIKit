@@ -1,0 +1,1 @@
+import{j as r}from"./jsx-runtime-CkxqCPlQ.js";import{M as t}from"./chunk-K6AXKMTT-OwgnNXpB.js";import"./index-DJO9vBfz.js";const a={parameters:{controls:{matchers:{color:/(background|color)$/i,date:/Date$/i}}},decorators:[o=>r.jsx(t,{initialEntries:["/"],children:r.jsx("div",{style:{margin:"24px"},children:r.jsx(o,{})})})]};export{a as default};
