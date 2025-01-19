@@ -36,29 +36,21 @@ export const Sidebar = styled.div`
     margin: 0;
   }
 
-  .link {
+  .link-wrapper {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 16px;
     border-radius: 4px;
     color: #8e8ca3;
     text-decoration: none;
 
+    a {
+      text-decoration: none;
+    }
+
     svg {
       width: 16px;
       height: 17px;
-    }
-
-    &.active {
-      background-color: #f1f0f5;
-      color: #515066;
-    }
-
-    @media (hover: hover) {
-      &:hover:not(.active) {
-        background-color: #fbfbfb;
-      }
     }
   }
 

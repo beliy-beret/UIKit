@@ -2,7 +2,6 @@ import { Button } from "../Button";
 import * as S from "./style";
 import { NavItemProps, SideBarProps } from "./types.ts";
 import { User } from "./User";
-import { NavLink } from "react-router";
 
 export const SideBar = ({
   children,
@@ -52,12 +51,6 @@ export const SideBar = ({
   );
 };
 
-SideBar.Link = ({ children, to }: NavItemProps) => {
-  return (
-    <NavLink
-      to={to}
-      className={({ isActive }) => (isActive ? "link active" : "link")}
-      children={children}
-    />
-  );
+SideBar.LinkItem = ({ children }: NavItemProps) => {
+  return <span className={"link-wrapper"} children={children} />;
 };

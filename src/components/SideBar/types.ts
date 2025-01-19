@@ -13,6 +13,5 @@ export type SideBarProps = UserProps & {
 };
 
 export type NavItemProps = {
-  to: string;
   children: ReactNode;
 };

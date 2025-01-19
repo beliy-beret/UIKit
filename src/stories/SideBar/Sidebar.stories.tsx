@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { SideBar as MyComponent } from "../../components";
 import { fn } from "@storybook/test";
+import { NavLink } from "react-router";
 
 const meta = {
   title: "Example/Sidebar",
@@ -30,9 +31,15 @@ export const Sidebar: Story = {
     return (
       <div style={{ width: "300px" }}>
         <MyComponent {...args}>
-          <MyComponent.Link to={""}>Profile</MyComponent.Link>
-          <MyComponent.Link to={"/settings"}>Settings</MyComponent.Link>
-          <MyComponent.Link to={"/messages"}>Messages</MyComponent.Link>
+          <MyComponent.LinkItem>
+            <NavLink to="/">Profile</NavLink>
+          </MyComponent.LinkItem>
+          <MyComponent.LinkItem>
+            <NavLink to="settings">Settings</NavLink>
+          </MyComponent.LinkItem>
+          <MyComponent.LinkItem>
+            <NavLink to="messages">Messages</NavLink>
+          </MyComponent.LinkItem>
         </MyComponent>
       </div>
     );
