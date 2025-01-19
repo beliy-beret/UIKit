@@ -26,7 +26,6 @@ export default tseslint.config(
       ],
       "prettier/prettier": 2,
       "no-var": 2,
-      "linebreak-style": [2, "unix"],
       "no-console": 2,
     },
   },
