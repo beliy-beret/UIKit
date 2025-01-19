@@ -1,40 +1,33 @@
-import { ChangeEvent, forwardRef, KeyboardEvent } from "react";
+import { forwardRef, KeyboardEvent } from "react";
 import * as S from "./style";
 import { RadioSizeType } from "./types.ts";
 
 type Props = {
+  value: string;
   id: string;
-  onToggleChecked: (checked: boolean) => void;
   checked: boolean;
+  onChange?: (value: string) => void;
   name?: string;
   size?: RadioSizeType;
   className?: string;
   disabled?: boolean;
   tabIndex?: number;
-  readOnly?: boolean;
 };
 
 export const Radio = forwardRef<HTMLInputElement, Props>(
   (
-    {
-      className,
-      id,
-      checked,
-      onToggleChecked,
-      size = "small",
-      ...props
-    }: Props,
+    { className, id, checked, size = "small", value, onChange, ...props },
     ref,
   ) => {
-    const radioHandler = (event: ChangeEvent<HTMLInputElement>) => {
-      if (onToggleChecked) {
-        onToggleChecked(event.currentTarget.checked);
+    const radioHandler = () => {
+      if (onChange) {
+        onChange(value);
       }
     };
 
     const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-      if (onToggleChecked && event.key === "Enter") {
-        onToggleChecked(!event.currentTarget.checked);
+      if (onChange && event.key === "Enter") {
+        onChange(event.currentTarget.value);
       }
     };
 
@@ -46,6 +39,7 @@ export const Radio = forwardRef<HTMLInputElement, Props>(
           ref={ref}
           type="radio"
           checked={checked}
+          value={value}
           {...props}
           onKeyDown={onKeyDownHandler}
           onChange={radioHandler}

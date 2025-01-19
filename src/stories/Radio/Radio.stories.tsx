@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { Radio as Component } from "../../components";
+import { useState } from "react";
 
 const meta = {
   title: "Example/Radio",
@@ -9,11 +10,27 @@ const meta = {
     layout: "standard",
   },
   argTypes: {},
-  args: { onToggleChecked: fn(), checked: false },
+  args: { onChange: fn(), checked: false, value: "" },
 } satisfies Meta<typeof Component>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+const Group = () => {
+  const [checkedValue, setCheckedValue] = useState("1");
+  return (
+    <div>
+      {[...Array(3).keys()].map((item, index) => (
+        <Component
+          id={String(index)}
+          checked={checkedValue === String(item)}
+          value={String(item)}
+          onChange={setCheckedValue}
+        />
+      ))}
+    </div>
+  );
+};
 
 export const UnChecked: Story = {
   args: {
@@ -72,5 +89,18 @@ export const BigDisableWithChecked: Story = {
     disabled: true,
     checked: true,
     size: "big",
+  },
+};
+
+export const RadioGroup: Story = {
+  args: {
+    id: "group",
+  },
+  render: function Render() {
+    return (
+      <div style={{ width: "300px" }}>
+        <Group />
+      </div>
+    );
   },
 };
