@@ -2,19 +2,6 @@ import * as S from "./style";
 import { useMemo } from "react";
 import { Button } from "../Button";
 
-const NEIGHBOURS = 1;
-
-function range(start: number, end: number, step = 1) {
-  if (end === undefined && start !== undefined) {
-    end = start;
-    start = 0;
-  }
-
-  return Array(Math.ceil((end - start) / step))
-    .fill(start)
-    .map((x, y) => x + y * step);
-}
-
 type Props = {
   totalCount: number;
   currentPage: number;
@@ -32,44 +19,52 @@ export const Pagination = ({
   withArrow = false,
   className = "",
 }: Props) => {
-  const total = totalCount === 0 ? 1 : Math.ceil(totalCount / perPage);
-  const pages = useMemo(() => {
-    // Total numbers: neighbours, current, first & last
-    const totalNumbers = NEIGHBOURS * 2 + 3;
-    const totalBlocks = totalNumbers + 2;
+  const lastPage = totalCount === 0 ? 1 : Math.ceil(totalCount / perPage);
+  const width = window.innerWidth;
 
-    if (total <= totalBlocks) {
-      return range(1, total + 1);
-    }
+  const pages = useMemo<Array<number[] | string> | undefined>(() => {
+    const list = [...Array(lastPage + 1).keys()].slice(1);
 
-    const startPage = Math.max(2, Math.min(currentPage - NEIGHBOURS, total));
-    const endPage = Math.min(
-      total - 1,
-      Math.min(currentPage + NEIGHBOURS, total),
-    );
+    if (lastPage === 1) return [];
 
-    let p = range(startPage, endPage + 1);
-    const hasLeftSpill = startPage > 2;
-    const hasRightSpill = total - endPage > 1;
-    const spillOffset = totalNumbers - (p.length + 1);
+    if (width <= 768) {
+      if (lastPage <= 5) return [list];
 
-    switch (true) {
-      case hasLeftSpill && !hasRightSpill: {
-        p = [...range(startPage - spillOffset - 1, startPage - 1), ...p];
-        break;
+      if (currentPage <= 3) {
+        return [list.slice(0, 3), "...", list.slice(-1)];
       }
 
-      case !hasLeftSpill && hasRightSpill: {
-        p = [...p, ...range(endPage + 1, endPage + spillOffset + 1)];
-        break;
+      if (currentPage > lastPage - 3) {
+        return [list.slice(0, 1), "...", list.slice(-3)];
       }
 
-      default:
-        break;
+      if (currentPage > 3 && currentPage < lastPage - 1) {
+        return [list.slice(0, 1), "...", [currentPage], "...", list.slice(-1)];
+      }
     }
 
-    return p;
-  }, [currentPage, total]);
+    if (width > 768) {
+      if (lastPage <= 7) return [list];
+
+      if (currentPage <= 3) {
+        return [list.slice(0, 3), "...", list.slice(-3)];
+      }
+
+      if (currentPage > lastPage - 3) {
+        return [list.slice(0, 3), "...", list.slice(-3)];
+      }
+
+      if (currentPage > 3 && currentPage < lastPage - 2) {
+        return [
+          list.slice(0, 1),
+          "...",
+          list.slice(currentPage - 2, currentPage + 1),
+          "...",
+          list.slice(-1),
+        ];
+      }
+    }
+  }, [currentPage, lastPage, width]);
 
   const onPrev = () => {
     onChangePage(currentPage - 1);
@@ -86,6 +81,7 @@ export const Pagination = ({
         variant="Outline"
         aria-hidden={!withArrow}
         aria-label="button-prev"
+        disabled={currentPage < 2}
       >
         <svg
           width="16"
@@ -107,66 +103,44 @@ export const Pagination = ({
             fill="#1B4DCB"
           />
         </svg>
-        Назад
+        <span>Назад</span>
       </Button>
 
       <S.List>
-        {total > 1 && (
+        {pages && !!pages.length && (
           <>
-            {!pages.includes(1) && (
-              <li>
-                <S.PaginationButton
-                  onClick={() => onChangePage(1)}
-                  aria-selected={currentPage === 1}
-                >
-                  1
-                </S.PaginationButton>
-              </li>
-            )}
+            {pages.map((range, index) => {
+              if (typeof range === "string") {
+                return (
+                  <li key={`${index}`}>
+                    <span className="separator">{range}</span>
+                  </li>
+                );
+              }
 
-            {!pages.includes(2) && (
-              <li>
-                <span>&hellip;</span>
-              </li>
-            )}
-
-            {pages.map((p) => (
-              <li key={`page-${p}`}>
-                <S.PaginationButton
-                  aria-selected={p === currentPage}
-                  onClick={() => onChangePage(p)}
-                >
-                  {p}
-                </S.PaginationButton>
-              </li>
-            ))}
-
-            {!pages.includes(total - 1) && (
-              <li>
-                <span>&hellip;</span>
-              </li>
-            )}
-
-            {!pages.includes(total) && (
-              <li>
-                <S.PaginationButton
-                  aria-selected={currentPage === total}
-                  onClick={() => onChangePage(total)}
-                >
-                  {total}
-                </S.PaginationButton>
-              </li>
-            )}
+              return range.map((p) => (
+                <li key={`page-${p}`}>
+                  <S.PaginationButton
+                    aria-selected={p === currentPage}
+                    onClick={() => onChangePage(p)}
+                  >
+                    {p}
+                  </S.PaginationButton>
+                </li>
+              ));
+            })}
           </>
         )}
       </S.List>
+
       <Button
         onClick={onNext}
         variant="Outline"
         aria-hidden={!withArrow}
         aria-label="button-next"
+        disabled={currentPage > lastPage - 1}
       >
-        Вперед
+        <span>Вперед</span>
         <svg
           width="16"
           height="17"
