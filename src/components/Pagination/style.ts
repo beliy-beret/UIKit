@@ -2,55 +2,6 @@ import styled from "styled-components";
 import { Colors } from "../colors";
 import { theme } from "../theme.ts";
 
-export const Pagination = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  button[aria-hidden="true"] {
-    display: none;
-  }
-
-  button[aria-label="button-prev"],
-  button[aria-label="button-next"] {
-    gap: 8px;
-    padding: unset;
-    width: 36px;
-    height: 36px;
-    flex: 0 0 36px;
-
-    span {
-      display: none;
-    }
-
-    svg {
-      width: 16px;
-      height: 16px;
-      path {
-        fill: currentColor;
-      }
-    }
-
-    @media (min-width: 768px) {
-      padding: 8px 16px;
-      flex-basis: fit-content;
-
-      span {
-        display: inline;
-      }
-    }
-  }
-
-  button[aria-label="button-prev"] {
-    margin-right: auto;
-  }
-
-  button[aria-label="button-next"] {
-    margin-left: auto;
-  }
-`;
-
 export const List = styled.ul`
   width: fit-content;
   display: flex;
@@ -69,10 +20,6 @@ export const List = styled.ul`
     height: 40px;
     justify-content: center;
     align-items: center;
-  }
-
-  @media (min-width: 430px) {
-    gap: 12px;
   }
 `;
 
@@ -108,5 +55,47 @@ export const PaginationButton = styled.button`
       background-color: ${Colors.blue["500"]};
       color: ${Colors.blue["10"]};
     }
+  }
+`;
+
+export const Pagination = styled.div<{ $width: number }>`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  ${List} {
+    ${({ $width }) => ($width <= 444 ? "gap: 0;" : "gap: 12px;")};
+  }
+
+  button[aria-hidden="true"] {
+    display: none;
+  }
+
+  button[aria-label="button-prev"],
+  button[aria-label="button-next"] {
+    gap: 8px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      path {
+        fill: currentColor;
+      }
+    }
+
+    ${({ $width }) =>
+      $width <= 565
+        ? "padding: unset; width: 36px; height: 36px; flex: 0 0 36px; span { display: none; }"
+        : "padding: 8px 16px; flex-basis: fit-content; span { display: inline; }"};
+  }
+
+  button[aria-label="button-prev"] {
+    margin-right: auto;
+  }
+
+  button[aria-label="button-next"] {
+    margin-left: auto;
   }
 `;

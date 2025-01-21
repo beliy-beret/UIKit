@@ -1,5 +1,5 @@
 import * as S from "./style";
-import { useMemo } from "react";
+import { useMemo, useRef, useEffect, useState } from "react";
 import { Button } from "../Button";
 
 type Props = {
@@ -19,15 +19,22 @@ export const Pagination = ({
   withArrow = false,
   className = "",
 }: Props) => {
+  const [width, setWidth] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
   const lastPage = totalCount === 0 ? 1 : Math.ceil(totalCount / perPage);
-  const width = window.innerWidth;
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    if (entries[0]) {
+      setWidth(entries[0].contentRect.width);
+    }
+  });
 
   const pages = useMemo<Array<number[] | string> | undefined>(() => {
     const list = [...Array(lastPage + 1).keys()].slice(1);
 
     if (lastPage === 1) return [];
 
-    if (width <= 768) {
+    if (width <= 380) {
       if (lastPage <= 5) return [list];
 
       if (currentPage <= 3) {
@@ -43,7 +50,7 @@ export const Pagination = ({
       }
     }
 
-    if (width > 768) {
+    if (width > 380) {
       if (lastPage <= 7) return [list];
 
       if (currentPage <= 3) {
@@ -74,8 +81,23 @@ export const Pagination = ({
     onChangePage(currentPage + 1);
   };
 
+  useEffect(() => {
+    if (ref && ref.current) {
+      resizeObserver.observe(ref.current);
+    }
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [ref]);
+
   return (
-    <S.Pagination aria-label="pagination" className={className}>
+    <S.Pagination
+      $width={width}
+      aria-label="pagination"
+      className={className}
+      ref={ref}
+    >
       <Button
         onClick={onPrev}
         variant="Outline"

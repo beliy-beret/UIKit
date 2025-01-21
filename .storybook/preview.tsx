@@ -13,7 +13,7 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <MemoryRouter initialEntries={["/"]}>
-        <div style={{ margin: "24px" }}>
+        <div style={{ margin: "24px", border: "1px solid red" }}>
           <Story />
         </div>
       </MemoryRouter>
