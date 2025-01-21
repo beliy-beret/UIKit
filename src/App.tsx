@@ -14,7 +14,6 @@ import "./style.css";
 import ava from "./assets/pikachu.png";
 import { Option } from "./components/Select/types.ts";
 import { useMemo, useState } from "react";
-import { InputWithMask } from "./components/Input/InputWithMask";
 
 const options: Option[] = [
   { value: "0", label: "Все" },
@@ -60,8 +59,6 @@ function App() {
 
     return [];
   }, [multipleSelectValues]);
-
-  const [, setMaskValue] = useState("");
 
   return (
     <section>
@@ -239,9 +236,6 @@ function App() {
         <Badge design="Warning">Label</Badge>
         <Badge design="Dangerous">Label</Badge>
         <Badge design="Informative">Label</Badge>
-      </div>
-      <div className="block">
-        <InputWithMask onChangeValue={setMaskValue} />
       </div>
     </section>
   );
