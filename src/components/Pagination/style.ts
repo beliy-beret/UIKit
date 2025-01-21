@@ -85,11 +85,13 @@ export const Pagination = styled.div<{ $width: number }>`
       }
     }
 
-    ${({ $width }) =>
-      $width <= 565
-        ? "padding: unset; width: 36px; height: 36px; flex: 0 0 36px; span { display: none; }"
-        : "padding: 8px 16px; flex-basis: fit-content; span { display: inline; }"};
-  }
+    ${({ $width }) => {
+      if ($width <= 576) {
+        return "padding: unset; width: 36px; height: 36px; flex: 0 0 36px; span { display: none; }";
+      } else {
+        return "padding: 8px 16px; flex-basis: fit-content; span { display: inline; }";
+      }
+    }}
 
   button[aria-label="button-prev"] {
     margin-right: auto;
