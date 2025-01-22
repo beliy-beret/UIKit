@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint'
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'storybook-static'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended, eslintPluginPrettierRecommended],
     files: ['**/*.{ts,tsx}'],
@@ -26,7 +26,6 @@ export default tseslint.config(
       ],
       "prettier/prettier": 2,
       "no-var": 2,
-      "linebreak-style": [2, "unix"],
       "no-console": 2,
     },
   },
