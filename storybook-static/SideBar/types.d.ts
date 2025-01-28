@@ -10,6 +10,5 @@ export type SideBarProps = UserProps & {
     logout: () => void;
 };
 export type NavItemProps = {
-    to: string;
     children: ReactNode;
 };

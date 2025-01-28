@@ -1,6 +1,6 @@
-import{j as n}from"./jsx-runtime-CkxqCPlQ.js";import{useMDXComponents as s}from"./index-BrnU7xv7.js";import{ae as d,af as r}from"./index-B1zqUzBz.js";import{L as t,a,b as m,c as p,d as c,e as x}from"./Link.stories-CYMuBmYB.js";import"./index-DJO9vBfz.js";import"./iframe-p8P312zo.js";import"../sb-preview/runtime.js";import"./index-DJdX7xnk.js";import"./index-j_8AUxV0.js";import"./index-DrFu-skq.js";import"./styled-components.browser.esm-CW2lnlac.js";import"./colors-BfrfeCNN.js";import"./theme-BVt_iaI7.js";function o(e){const i={h1:"h1",h2:"h2",p:"p",...s(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(d,{of:t}),`
+import{j as n}from"./jsx-runtime-CkxqCPlQ.js";import{useMDXComponents as s}from"./index-BrnU7xv7.js";import{ae as d,af as r}from"./index-DYx6pDkl.js";import{L as t,a,b as m,c as p,d as c,e as x}from"./Link.stories-CYMuBmYB.js";import"./index-DJO9vBfz.js";import"./iframe-CeRYQd6k.js";import"../sb-preview/runtime.js";import"./index-DJdX7xnk.js";import"./index-j_8AUxV0.js";import"./index-DrFu-skq.js";import"./styled-components.browser.esm-CW2lnlac.js";import"./colors-BfrfeCNN.js";import"./theme-BVt_iaI7.js";function o(e){const i={h1:"h1",h2:"h2",p:"p",...s(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(d,{of:t}),`
 `,n.jsx(i.h1,{id:"link",children:"Link"}),`
-`,n.jsx(i.p,{children:`Компонент ссылка.
+`,n.jsx(i.p,{children:`Компонент ссылка.\r
 В качестве параметров принимает все атрибуты тега "а" и опцинальный параметр "design".`}),`
 `,n.jsxs(i.p,{children:[n.jsx("font",{color:"red",children:"design"}),' - "Informative" | "Body" | "Dangerous" | "Completed" | "Primary" | "Warning" по умолчанию применяется "Body".']}),`
 `,n.jsx(i.h2,{id:"designbody",children:'design="Body"'}),`
