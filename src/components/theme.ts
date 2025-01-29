@@ -81,7 +81,16 @@ export const theme = {
         "font-size: 36px; font-weight: 400; line-height: 126%; font-family: 'Manrope Medium';",
       semibold:
         "font-size: 36px; font-weight: 400; line-height: 126%; font-family: 'Manrope Semibold';",
-      bold: "font-size: 30px; font-weight: 400; line-height: 126%; font-family: 'Manrope Bold';",
+      bold: "font-size: 36px; font-weight: 400; line-height: 126%; font-family: 'Manrope Bold';",
+    },
+    font60: {
+      regular:
+        "font-size: 60px; font-weight: 400; line-height: 120%; font-family: 'Manrope Regular';",
+      medium:
+        "font-size: 60px; font-weight: 400; line-height: 120%; font-family: 'Manrope Medium';",
+      semibold:
+        "font-size: 60px; font-weight: 400; line-height: 120%; font-family: 'Manrope Semibold';",
+      bold: "font-size: 60px; font-weight: 400; line-height: 126%; font-family: 'Manrope Bold';",
     },
   },
 };

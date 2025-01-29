@@ -8,7 +8,7 @@ export const List = styled.ul`
   align-items: center;
   justify-content: center;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
 
   & > li {
     list-style: none;
@@ -92,12 +92,4 @@ export const Pagination = styled.div<{ $width: number }>`
         return "padding: 8px 16px; flex-basis: fit-content; span { display: inline; }";
       }
     }}
-
-  button[aria-label="button-prev"] {
-    margin-right: auto;
-  }
-
-  button[aria-label="button-next"] {
-    margin-left: auto;
-  }
 `;
