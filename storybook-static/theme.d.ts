@@ -56,5 +56,11 @@ export declare const theme: {
             semibold: string;
             bold: string;
         };
+        font60: {
+            regular: string;
+            medium: string;
+            semibold: string;
+            bold: string;
+        };
     };
 };
