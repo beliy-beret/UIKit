@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { CircleProgress } from "../../components";
 
 const meta = {
-  title: "Example/CircleProgress",
+  title: "Example/Progress/CircleProgress",
   component: CircleProgress,
   parameters: {
     layout: "standard",

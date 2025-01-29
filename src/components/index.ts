@@ -21,4 +21,4 @@ export { SideBar } from "./SideBar";
 export { Tabs } from "./Tabs";
 export { Breadcrumbs } from "./Breadcrumbs";
 export { Switch } from "./Switch";
-export { CircleProgress } from "./Progress";
+export { CircleProgress, LinearProgress } from "./Progress";
