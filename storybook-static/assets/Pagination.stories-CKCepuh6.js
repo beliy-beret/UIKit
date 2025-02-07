@@ -1,4 +1,4 @@
-import{j as t}from"./jsx-runtime-CkxqCPlQ.js";import{d as x}from"./styled-components.browser.esm-CW2lnlac.js";import{C as o}from"./colors-BfrfeCNN.js";import{t as E}from"./theme--sRFsRre.js";import{r as p}from"./index-DJO9vBfz.js";import{B as C}from"./index-jx-WeRfc.js";const A=x.ul`
+import{j as t}from"./jsx-runtime-CkxqCPlQ.js";import{d as x}from"./styled-components.browser.esm-CW2lnlac.js";import{C as o}from"./colors-BfrfeCNN.js";import{t as E}from"./theme--sRFsRre.js";import{r as p}from"./index-DJO9vBfz.js";import{B as C}from"./index-Dswad2bv.js";const A=x.ul`
   width: fit-content;
   display: flex;
   align-items: center;

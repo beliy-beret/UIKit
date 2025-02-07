@@ -17,6 +17,7 @@ const List = () => {
         <Portals.InvestorCalendar />
         <Portals.InvestorSupport />
         <Portals.Personal />
+        <Portals.IndustrialParks />
       </div>
       <div
         style={{
@@ -32,6 +33,7 @@ const List = () => {
         <Portals.InvestorCalendar disabled={true} />
         <Portals.InvestorSupport disabled={true} />
         <Portals.Personal disabled={true} />
+        <Portals.IndustrialParks disabled={true} />
       </div>
     </div>
   );

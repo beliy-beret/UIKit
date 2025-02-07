@@ -42,10 +42,6 @@ export const Popup = styled.div`
     }
   }
 
-  &[aria-expanded="true"] {
-    display: flex;
-  }
-
   @keyframes show {
     from {
       opacity: 0;
@@ -57,16 +53,17 @@ export const Popup = styled.div`
 `;
 
 export const Share = styled.div`
+  box-sizing: border-box;
   position: relative;
   width: fit-content;
 
   button.share-button {
-    width: fit-content;
-    background-color: inherit;
-    border: none;
-    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    padding: unset;
 
     svg {
+      flex: 0 0 16px;
       height: 16px;
       width: 16px;
 
