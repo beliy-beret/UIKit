@@ -9,6 +9,12 @@ import{j as n}from"./jsx-runtime-CkxqCPlQ.js";import{d as c}from"./styled-compon
   border: none;
   transition: all 200ms ease-in-out;
 
+  svg {
+    path {
+      fill: currentColor;
+    }
+  }
+
   &:focus {
     outline: none;
   }
