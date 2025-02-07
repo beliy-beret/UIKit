@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Share as ShareComponent } from "../../components";
+import { Share as ShareIcon } from "../../assets/Share";
 
 const meta = {
   title: "Example/Share",
@@ -37,6 +38,58 @@ export const Share: Story = {
         </p>
         <div style={{ display: "flex", justifyContent: "end" }}>
           <ShareComponent {...args} />
+        </div>
+      </div>
+    );
+  },
+};
+
+export const ShareWithIconProps: Story = {
+  render: function Render(args) {
+    return (
+      <div
+        style={{
+          padding: "24px",
+          border: "2px solid lightblue",
+          borderRadius: "8px",
+          width: "250px",
+        }}
+      >
+        <h2>Some card title</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad commodi
+          deleniti dolore eveniet explicabo iusto laudantium non nostrum quae,
+          quam reiciendis repellendus similique tempore tenetur ullam veritatis?
+          Enim, soluta.
+        </p>
+        <div style={{ display: "flex", justifyContent: "end" }}>
+          <ShareComponent {...args} icon={<ShareIcon />} />
+        </div>
+      </div>
+    );
+  },
+};
+
+export const ShareWithVariantProps: Story = {
+  render: function Render(args) {
+    return (
+      <div
+        style={{
+          padding: "24px",
+          border: "2px solid lightblue",
+          borderRadius: "8px",
+          width: "250px",
+        }}
+      >
+        <h2>Some card title</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad commodi
+          deleniti dolore eveniet explicabo iusto laudantium non nostrum quae,
+          quam reiciendis repellendus similique tempore tenetur ullam veritatis?
+          Enim, soluta.
+        </p>
+        <div style={{ display: "flex", justifyContent: "end" }}>
+          <ShareComponent {...args} icon={<ShareIcon />} variant="Secondary" />
         </div>
       </div>
     );

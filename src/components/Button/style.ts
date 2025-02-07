@@ -19,6 +19,12 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   transition: all 200ms ease-in-out;
 
+  svg {
+    path {
+      fill: currentColor;
+    }
+  }
+
   &:focus {
     outline: none;
   }

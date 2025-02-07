@@ -17,6 +17,7 @@ const List = () => {
       <Logos.Mosreg />
       <Logos.InvestWay />
       <Logos.InvestExport />
+      <Logos.IndustrialParks />
     </div>
   );
 };
