@@ -52,11 +52,6 @@ export const Tooltip = ({
     const spaceBottom =
       window.innerHeight - event.currentTarget.offsetHeight - spaceTop;
 
-    console.log("spaceLeft:", spaceLeft);
-    console.log("spaceRight:", spaceRight);
-    console.log("spaceTop:", spaceTop);
-    console.log("spaceBottom:", spaceBottom);
-
     if (spaceTop > tooltipHeight + 16 && spaceLeft < widthDiff) {
       return setTooltipPosition("TL");
     }

@@ -15,7 +15,7 @@ export const Tooltip = styled.div<TooltipStyleProps>`
   opacity: 0;
   padding: 0;
   overflow: hidden;
-  max-width: 200px;
+  max-width: max-content;
   position: absolute;
   border-radius: 8px;
   transition: opacity 300ms ease-in-out;
@@ -53,7 +53,7 @@ export const Wrapper = styled.div<
       height: auto;
       overflow: visible;
       ${({ $width }) =>
-        $width ? `width: ${$width}px; max-width: unset` : "width: auto;"}
+        $width ? `width: ${$width}px; max-width: unset` : "width: 100dvw;"}
     }
 
     svg.tooltip-triangle {
