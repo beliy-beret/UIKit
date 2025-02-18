@@ -15,7 +15,7 @@ export const Tooltip = styled.div<TooltipStyleProps>`
   opacity: 0;
   padding: 0;
   overflow: hidden;
-  max-width: 230px;
+  max-width: 200px;
   position: absolute;
   border-radius: 8px;
   transition: opacity 300ms ease-in-out;
@@ -24,7 +24,11 @@ export const Tooltip = styled.div<TooltipStyleProps>`
   ${({ $variant }) => TOOLTIP_VARIANT[$variant]};
 `;
 
-export const Wrapper = styled.div<TooltipStyleProps>`
+export const Wrapper = styled.div<
+  TooltipStyleProps & {
+    $width: number | undefined;
+  }
+>`
   position: relative;
   width: fit-content;
   max-height: fit-content;
@@ -47,8 +51,9 @@ export const Wrapper = styled.div<TooltipStyleProps>`
       padding: 8px 12px;
       opacity: 1;
       height: auto;
-      width: 100dvw;
       overflow: visible;
+      ${({ $width }) =>
+        $width ? `width: ${$width}px; max-width: unset` : "width: auto;"}
     }
 
     svg.tooltip-triangle {
@@ -63,8 +68,9 @@ export const Wrapper = styled.div<TooltipStyleProps>`
       padding: 8px 12px;
       opacity: 1;
       height: auto;
-      width: 100dvw;
       overflow: visible;
+      ${({ $width }) =>
+        $width ? `width: ${$width}px; max-width: unset` : "width: 100dvw;"}
     }
 
     svg.tooltip-triangle {
