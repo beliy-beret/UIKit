@@ -17,6 +17,26 @@ export const Tooltip = ({
     position || "TOP",
   );
 
+  const getTotalOffsetLeft = (element: any) => {
+    let offset = element.offsetLeft;
+
+    if (element.offsetParent && element.offsetParent !== document.body) {
+      offset += getTotalOffsetLeft(element.offsetParent);
+    }
+
+    return offset;
+  };
+
+  const getTotalOffsetTop = (element: any) => {
+    let offset = element.offsetTop;
+
+    if (element.offsetParent && element.offsetParent !== document.body) {
+      offset += getTotalOffsetTop(element.offsetParent);
+    }
+
+    return offset;
+  };
+
   const calculateTooltipPosition = (event: MouseEvent<HTMLDivElement>) => {
     if (position) return;
 
@@ -26,11 +46,16 @@ export const Tooltip = ({
     const containerHeight = event.currentTarget.clientHeight;
     const widthDiff = Math.ceil((tooltipWidth - containerWidth) / 2);
     const heightDiff = Math.ceil((tooltipHeight - containerHeight) / 2);
-    const spaceLeft = event.currentTarget.offsetLeft;
+    const spaceLeft = getTotalOffsetLeft(event.currentTarget);
     const spaceRight = window.innerWidth - containerWidth - spaceLeft - 18;
-    const spaceTop = event.currentTarget.offsetTop;
+    const spaceTop = getTotalOffsetTop(event.currentTarget);
     const spaceBottom =
       window.innerHeight - event.currentTarget.offsetHeight - spaceTop;
+
+    console.log("spaceLeft:", spaceLeft);
+    console.log("spaceRight:", spaceRight);
+    console.log("spaceTop:", spaceTop);
+    console.log("spaceBottom:", spaceBottom);
 
     if (spaceTop > tooltipHeight + 16 && spaceLeft < widthDiff) {
       return setTooltipPosition("TL");
