@@ -98,6 +98,7 @@ export const Tooltip = ({
       $position={tooltipPosition}
       onMouseEnter={calculateTooltipPosition}
       aria-expanded={open}
+      aria-label="tooltip-wrapper"
     >
       {triangle && <Triangle />}
 
