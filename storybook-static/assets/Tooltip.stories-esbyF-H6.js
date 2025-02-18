@@ -1,0 +1,264 @@
+import{j as t}from"./jsx-runtime-CkxqCPlQ.js";import{d as g}from"./styled-components.browser.esm-CW2lnlac.js";import{C as s}from"./colors-BfrfeCNN.js";import{t as q}from"./theme--sRFsRre.js";import{r as I}from"./index-DJO9vBfz.js";import{B as r}from"./index-Dswad2bv.js";const K={TOP:"bottom: 100%; left: 50%; translate: -50% 0; margin-bottom: 12px;",TR:"right:0; bottom: 100%; margin-bottom: 12px;",TL:"bottom: 100%; left: 0; margin-bottom: 12px;",BOTTOM:"top: 100%; left: 50%; translate: -50% 0; margin-top: 12px;",BL:"top: 100%; left: 0; margin-top: 12px;",BR:"top: 100%; right: 0; margin-top: 12px;",LEFT:"top: 50%; right: 100%; translate: 0 -50%; margin-right: 12px;",LT:"top: 0; right: 100%; margin-right: 12px;",LB:"bottom: 0; right: 100%; margin-right: 12px;",RIGHT:"bottom: 50%; left: 100%; translate: 0 50%; margin-left: 12px;",RT:"top: 0; left: 100%; margin-left: 12px;",RB:"bottom: 0; left: 100%; margin-left: 12px;"},C={LIGHT:`color: ${s.blueGray[800]}; background-color: ${s.blueGray[10]};`,DARK:`color: ${s.blueGray[10]}; background-color: ${s.blueGray[800]};`},z={LIGHT:s.blueGray[10],DARK:s.blueGray[800]},X={TOP:"top: -7px; left: 50%; translate: -50% -100%;",TR:"top: -7px; left: 50%; translate: -50% -100%;",TL:"top: -7px; left: 50%; translate: -50% -100%;",BOTTOM:"bottom: -7px; left: 50%; translate: -50% 100%; rotate: 180deg",BL:"bottom: -7px; left: 50%; translate: -50% 100%; rotate: 180deg",BR:"bottom: -7px; left: 50%; translate: -50% 100%; rotate: 180deg",LEFT:"bottom: 50%; left: -3px; translate: -100% 50%; rotate: 270deg",LT:"bottom: 50%; left: -3px; translate: -100% 50%; rotate: 270deg",LB:"bottom: 50%; left: -3px; translate: -100% 50%; rotate: 270deg",RIGHT:"bottom: 50%; right: -3px; translate: 100% 50%; rotate: 90deg",RT:"bottom: 50%; right: -3px; translate: 100% 50%; rotate: 90deg",RB:"bottom: 50%; right: -3px; translate: 100% 50%; rotate: 90deg"},R=g.div`
+  box-sizing: border-box;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  padding: 0;
+  overflow: hidden;
+  max-width: 230px;
+  position: absolute;
+  border-radius: 8px;
+  transition: opacity 300ms ease-in-out;
+  ${q.text.font12.medium};
+  ${({$position:i})=>K[i]};
+  ${({$variant:i})=>C[i]};
+`,Z=g.div`
+  position: relative;
+  width: fit-content;
+  max-height: fit-content;
+
+  svg.tooltip-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+
+    path {
+      fill: ${({$variant:i})=>z[i]};
+    }
+    ${({$position:i})=>X[i]};
+  }
+
+  &[aria-expanded="true"] {
+    ${R} {
+      padding: 8px 12px;
+      opacity: 1;
+      height: auto;
+      width: 100dvw;
+      overflow: visible;
+    }
+
+    svg.tooltip-triangle {
+      width: 12px;
+      height: 6px;
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    ${R} {
+      padding: 8px 12px;
+      opacity: 1;
+      height: auto;
+      width: 100dvw;
+      overflow: visible;
+    }
+
+    svg.tooltip-triangle {
+      width: 12px;
+      height: 6px;
+      opacity: 1;
+    }
+  }
+`,M=i=>t.jsx("svg",{className:"tooltip-triangle",width:12,height:6,viewBox:"0 0 12 6",fill:"none",xmlns:"http://www.w3.org/2000/svg",...i,children:t.jsx("path",{d:"M6 6L0 0H12L6 6Z",fill:"#0B1429"})});M.__docgenInfo={description:"",methods:[],displayName:"SvgComponent"};const n=({children:i,content:o,variant:L="LIGHT",position:_,open:V=!1,triangle:D=!1})=>{const f=I.useRef(null),[j,e]=I.useState(_||"TOP"),F=p=>{var b,O;const T=((b=f.current)==null?void 0:b.clientWidth)||0,a=((O=f.current)==null?void 0:O.clientHeight)||0,y=p.currentTarget.clientWidth,k=p.currentTarget.clientHeight,u=Math.ceil((T-y)/2),m=Math.ceil((a-k)/2),v=p.currentTarget.offsetLeft,d=window.innerWidth-y-v-18,l=p.currentTarget.offsetTop,c=window.innerHeight-p.currentTarget.offsetHeight-l;if(l>a+16&&v<u)return e("TL");if(l>a+16&&d<u)return e("TR");if(l>a+16)return e("TOP");if(d>T&&l<m)return e("RT");if(d>T&&c<m)return e("RB");if(d>T)return e("RIGHT");if(c>a+16&&v<u)return e("BL");if(c>a+16&&d<u||c>a+16)return e("BR");if(l<m)return e("LT");if(c<m)return e("LB");e("LEFT")};return t.jsxs(Z,{$variant:L,$position:j,onMouseEnter:F,"aria-expanded":V,children:[D&&t.jsx(M,{}),t.jsx(R,{ref:f,$variant:L,$position:j,"aria-label":"tooltip",children:o}),i]})};n.__docgenInfo={description:"",methods:[],displayName:"Tooltip",props:{content:{required:!0,tsType:{name:"union",raw:"ReactNode | string",elements:[{name:"ReactNode"},{name:"string"}]},description:""},children:{required:!1,tsType:{name:"ReactNode"},description:""},open:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},triangle:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},position:{required:!1,tsType:{name:"union",raw:"keyof typeof TOOLTIP_POSITION",elements:[{name:"literal",value:"TOP"},{name:"literal",value:"TR"},{name:"literal",value:"TL"},{name:"literal",value:"BOTTOM"},{name:"literal",value:"BL"},{name:"literal",value:"BR"},{name:"literal",value:"LEFT"},{name:"literal",value:"LT"},{name:"literal",value:"LB"},{name:"literal",value:"RIGHT"},{name:"literal",value:"RT"},{name:"literal",value:"RB"}]},description:""},variant:{required:!1,tsType:{name:"union",raw:"keyof typeof TOOLTIP_VARIANT",elements:[{name:"literal",value:"LIGHT"},{name:"literal",value:"DARK"}]},description:"",defaultValue:{value:'"LIGHT"',computed:!1}}}};const W=g.div`
+  padding: 100px 250px;
+  display: grid;
+  grid-template-areas: ". T ." "L . R" ". B .";
+
+  button {
+    min-width: 100px;
+  }
+  .top,
+  .right,
+  .left,
+  .bottom {
+    display: flex;
+    gap: 20px;
+  }
+
+  .left,
+  .right {
+    flex-direction: column;
+  }
+
+  .top {
+    grid-area: T;
+  }
+  .right {
+    grid-area: R;
+  }
+  .bottom {
+    grid-area: B;
+  }
+  .left {
+    grid-area: L;
+  }
+`,J=g.div`
+  box-sizing: border-box;
+  padding: 40px 40px;
+  width: 100%;
+  height: 90vh;
+  background-color: #c6c6c6;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  .container {
+    width: fit-content;
+    height: fit-content;
+
+    &.tl {
+      grid-column: 1;
+      grid-row: 1;
+      place-self: start;
+    }
+    &.tr {
+      grid-column: 2;
+      grid-row: 1;
+      place-self: start end;
+    }
+    &.br {
+      grid-column: 2;
+      grid-row: 2;
+      place-self: end;
+    }
+    &.bl {
+      grid-column: 1;
+      grid-row: 2;
+      place-self: end start;
+    }
+  }
+`,rt={title:"Example/Tooltip",component:n,parameters:{layout:"standard"},argTypes:{},args:{content:'Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.'}},h={render:function(o){return t.jsxs(W,{children:[t.jsxs("div",{className:"top",children:[t.jsx(n,{...o,position:"TL",children:t.jsx(r,{variant:"Secondary",children:"TL"})}),t.jsx(n,{...o,position:"TOP",children:t.jsx(r,{variant:"Secondary",children:"TOP"})}),t.jsx(n,{...o,position:"TR",children:t.jsx(r,{variant:"Secondary",children:"TR"})})]}),t.jsxs("div",{className:"right",children:[t.jsx(n,{...o,position:"RT",children:t.jsx(r,{variant:"Secondary",children:"RT"})}),t.jsx(n,{...o,position:"RIGHT",children:t.jsx(r,{variant:"Secondary",children:"RIGHT"})}),t.jsx(n,{...o,position:"RB",children:t.jsx(r,{variant:"Secondary",children:"RB"})})]}),t.jsxs("div",{className:"bottom",children:[t.jsx(n,{...o,position:"BR",children:t.jsx(r,{variant:"Secondary",children:"BR"})}),t.jsx(n,{...o,position:"BOTTOM",children:t.jsx(r,{variant:"Secondary",children:"BOTTOM"})}),t.jsx(n,{...o,position:"BL",children:t.jsx(r,{variant:"Secondary",children:"BL"})})]}),t.jsxs("div",{className:"left",children:[t.jsx(n,{...o,position:"LB",children:t.jsx(r,{variant:"Secondary",children:"LB"})}),t.jsx(n,{...o,position:"LEFT",children:t.jsx(r,{variant:"Secondary",children:"RB"})}),t.jsx(n,{...o,position:"LT",children:t.jsx(r,{variant:"Secondary",children:"LT"})})]})]})}},x={args:{variant:"DARK"},render:function(o){return t.jsxs(W,{children:[t.jsxs("div",{className:"top",children:[t.jsx(n,{...o,position:"TL",children:t.jsx(r,{children:"TL"})}),t.jsx(n,{...o,position:"TOP",children:t.jsx(r,{children:"TOP"})}),t.jsx(n,{...o,position:"TR",children:t.jsx(r,{children:"TR"})})]}),t.jsxs("div",{className:"right",children:[t.jsx(n,{...o,position:"RT",children:t.jsx(r,{children:"RT"})}),t.jsx(n,{...o,position:"RIGHT",children:t.jsx(r,{children:"RIGHT"})}),t.jsx(n,{...o,position:"RB",children:t.jsx(r,{children:"RB"})})]}),t.jsxs("div",{className:"bottom",children:[t.jsx(n,{...o,position:"BR",children:t.jsx(r,{children:"BR"})}),t.jsx(n,{...o,position:"BOTTOM",children:t.jsx(r,{children:"BOTTOM"})}),t.jsx(n,{...o,position:"BL",children:t.jsx(r,{children:"BL"})})]}),t.jsxs("div",{className:"left",children:[t.jsx(n,{...o,position:"LB",children:t.jsx(r,{children:"LB"})}),t.jsx(n,{...o,position:"LEFT",children:t.jsx(r,{children:"RB"})}),t.jsx(n,{...o,position:"LT",children:t.jsx(r,{children:"LT"})})]})]})}},B={render:function(o){return t.jsxs(J,{children:[t.jsx("div",{className:"container tl",children:t.jsx(n,{...o,children:t.jsx(r,{children:"Element"})})}),t.jsx("div",{className:"container tr",children:t.jsx(n,{...o,children:t.jsx(r,{children:"Element"})})}),t.jsx("div",{className:"container br",children:t.jsx(n,{...o,children:t.jsx(r,{children:"Element"})})}),t.jsx("div",{className:"container bl",children:t.jsx(n,{...o,children:t.jsx(r,{children:"Element"})})})]})}};var N,w,S;h.parameters={...h.parameters,docs:{...(N=h.parameters)==null?void 0:N.docs,source:{originalSource:`{
+  render: function Render(args) {
+    return <Wrapper>\r
+        <div className="top">\r
+          <Tooltip {...args} position="TL">\r
+            <Button variant="Secondary">TL</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="TOP">\r
+            <Button variant="Secondary">TOP</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="TR">\r
+            <Button variant="Secondary">TR</Button>\r
+          </Tooltip>\r
+        </div>\r
+\r
+        <div className="right">\r
+          <Tooltip {...args} position="RT">\r
+            <Button variant="Secondary">RT</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="RIGHT">\r
+            <Button variant="Secondary">RIGHT</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="RB">\r
+            <Button variant="Secondary">RB</Button>\r
+          </Tooltip>\r
+        </div>\r
+\r
+        <div className="bottom">\r
+          <Tooltip {...args} position="BR">\r
+            <Button variant="Secondary">BR</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="BOTTOM">\r
+            <Button variant="Secondary">BOTTOM</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="BL">\r
+            <Button variant="Secondary">BL</Button>\r
+          </Tooltip>\r
+        </div>\r
+\r
+        <div className="left">\r
+          <Tooltip {...args} position="LB">\r
+            <Button variant="Secondary">LB</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="LEFT">\r
+            <Button variant="Secondary">RB</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="LT">\r
+            <Button variant="Secondary">LT</Button>\r
+          </Tooltip>\r
+        </div>\r
+      </Wrapper>;
+  }
+}`,...(S=(w=h.parameters)==null?void 0:w.docs)==null?void 0:S.source}}};var P,G,H;x.parameters={...x.parameters,docs:{...(P=x.parameters)==null?void 0:P.docs,source:{originalSource:`{
+  args: {
+    variant: "DARK"
+  },
+  render: function Render(args) {
+    return <Wrapper>\r
+        <div className="top">\r
+          <Tooltip {...args} position="TL">\r
+            <Button>TL</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="TOP">\r
+            <Button>TOP</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="TR">\r
+            <Button>TR</Button>\r
+          </Tooltip>\r
+        </div>\r
+\r
+        <div className="right">\r
+          <Tooltip {...args} position="RT">\r
+            <Button>RT</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="RIGHT">\r
+            <Button>RIGHT</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="RB">\r
+            <Button>RB</Button>\r
+          </Tooltip>\r
+        </div>\r
+\r
+        <div className="bottom">\r
+          <Tooltip {...args} position="BR">\r
+            <Button>BR</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="BOTTOM">\r
+            <Button>BOTTOM</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="BL">\r
+            <Button>BL</Button>\r
+          </Tooltip>\r
+        </div>\r
+\r
+        <div className="left">\r
+          <Tooltip {...args} position="LB">\r
+            <Button>LB</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="LEFT">\r
+            <Button>RB</Button>\r
+          </Tooltip>\r
+          <Tooltip {...args} position="LT">\r
+            <Button>LT</Button>\r
+          </Tooltip>\r
+        </div>\r
+      </Wrapper>;
+  }
+}`,...(H=(G=x.parameters)==null?void 0:G.docs)==null?void 0:H.source}}};var E,A,$;B.parameters={...B.parameters,docs:{...(E=B.parameters)==null?void 0:E.docs,source:{originalSource:`{
+  render: function Render(args) {
+    return <AutoPositionWrapper>\r
+        <div className="container tl">\r
+          <Tooltip {...args}>\r
+            <Button>Element</Button>\r
+          </Tooltip>\r
+        </div>\r
+        <div className="container tr">\r
+          <Tooltip {...args}>\r
+            <Button>Element</Button>\r
+          </Tooltip>\r
+        </div>\r
+        <div className="container br">\r
+          <Tooltip {...args}>\r
+            <Button>Element</Button>\r
+          </Tooltip>\r
+        </div>\r
+        <div className="container bl">\r
+          <Tooltip {...args}>\r
+            <Button>Element</Button>\r
+          </Tooltip>\r
+        </div>\r
+      </AutoPositionWrapper>;
+  }
+}`,...($=(A=B.parameters)==null?void 0:A.docs)==null?void 0:$.source}}};const it=["LightVariantTooltip","DarkVariantTooltip","AutoPositionTooltip"];export{B as AutoPositionTooltip,x as DarkVariantTooltip,h as LightVariantTooltip,it as __namedExportsOrder,rt as default};

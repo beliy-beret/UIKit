@@ -22,3 +22,4 @@ export { Tabs } from "./Tabs";
 export { Breadcrumbs } from "./Breadcrumbs";
 export { Switch } from "./Switch";
 export { CircleProgress, LinearProgress } from "./Progress";
+export { Tooltip } from "./Tooltip";
