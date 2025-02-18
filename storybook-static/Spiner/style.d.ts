@@ -1,1 +1,0 @@
-export declare const Spinner: import('styled-components/dist/types').IStyledComponentBase<"web", import('styled-components').FastOmit<import('../../../node_modules/react').SVGProps<SVGSVGElement>, never>> & string;
