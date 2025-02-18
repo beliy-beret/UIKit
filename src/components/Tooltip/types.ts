@@ -50,6 +50,7 @@ export type TooltipProps = {
   triangle?: boolean;
   position?: TooltipPosition;
   variant?: TooltipVariant;
+  width?: number;
 };
 
 export type TooltipStyleProps = {

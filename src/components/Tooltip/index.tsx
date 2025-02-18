@@ -6,10 +6,11 @@ import { useState, useRef, MouseEvent } from "react";
 export const Tooltip = ({
   children,
   content,
-  variant = "LIGHT",
+  width,
+  variant = "DARK",
   position,
   open = false,
-  triangle = false,
+  triangle = true,
 }: TooltipProps) => {
   const tooltipRef = useRef<HTMLDivElement>(null);
   const [tooltipPosition, setTooltipPosition] = useState<TooltipPosition>(
@@ -17,6 +18,8 @@ export const Tooltip = ({
   );
 
   const calculateTooltipPosition = (event: MouseEvent<HTMLDivElement>) => {
+    if (position) return;
+
     const tooltipWidth = tooltipRef.current?.clientWidth || 0;
     const tooltipHeight = tooltipRef.current?.clientHeight || 0;
     const containerWidth = event.currentTarget.clientWidth;
@@ -70,6 +73,7 @@ export const Tooltip = ({
 
   return (
     <S.Wrapper
+      $width={width}
       $variant={variant}
       $position={tooltipPosition}
       onMouseEnter={calculateTooltipPosition}
