@@ -11,14 +11,14 @@ type Props = {
 };
 
 export const Accordion = ({
-  open = false,
+  open,
   title,
   className = "",
   id,
   onClick,
   children,
 }: Props) => {
-  const [isOpen, setIsOpen] = useState(open);
+  const [isOpen, setIsOpen] = useState(false);
   const onTitleClick = () => {
     if (onClick) {
       return onClick();
@@ -27,7 +27,11 @@ export const Accordion = ({
   };
 
   return (
-    <S.Accordion className={className} id={id} aria-expanded={isOpen}>
+    <S.Accordion
+      className={className}
+      id={id}
+      aria-expanded={open !== undefined ? open : isOpen}
+    >
       <S.Title onClick={onTitleClick}>
         <span aria-label="accordion-title">{title}</span>
 
