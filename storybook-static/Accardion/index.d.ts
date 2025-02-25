@@ -5,6 +5,7 @@ type Props = {
     children: ReactNode | string;
     className?: string;
     id?: string;
+    onClick?: () => void;
 };
-export declare const Accordion: ({ open, title, className, id, children, }: Props) => import("react/jsx-runtime").JSX.Element;
+export declare const Accordion: ({ open, title, className, id, onClick, children, }: Props) => import("react/jsx-runtime").JSX.Element;
 export {};
