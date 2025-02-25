@@ -7,6 +7,7 @@ type Props = {
   children: ReactNode | string;
   className?: string;
   id?: string;
+  onClick?: () => void;
 };
 
 export const Accordion = ({
@@ -14,13 +15,20 @@ export const Accordion = ({
   title,
   className = "",
   id,
+  onClick,
   children,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(open);
+  const onTitleClick = () => {
+    if (onClick) {
+      return onClick();
+    }
+    setIsOpen(!isOpen);
+  };
 
   return (
     <S.Accordion className={className} id={id} aria-expanded={isOpen}>
-      <S.Title onClick={() => setIsOpen(!isOpen)}>
+      <S.Title onClick={onTitleClick}>
         <span aria-label="accordion-title">{title}</span>
 
         <svg
