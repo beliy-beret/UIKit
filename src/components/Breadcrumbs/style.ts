@@ -6,6 +6,7 @@ export const Breadcrumbs = styled.ul`
   ${theme.text.font14.regular};
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   list-style: none;
   color: ${Colors.blueGray["500"]};
