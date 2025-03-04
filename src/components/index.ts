@@ -15,7 +15,7 @@ export { Spinner } from "./Spiner";
 export { Accordion } from "./Accardion";
 export { Preloader } from "./Preloader";
 export { Radio } from "./Radio";
-export { Portals, Logos } from "./Portals";
+export { Portals, Logos, MarchLogo } from "./Portals";
 export { PortalBox } from "./PortalsBox";
 export { SideBar } from "./SideBar";
 export { Tabs } from "./Tabs";
