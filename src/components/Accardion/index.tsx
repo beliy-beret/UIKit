@@ -1,7 +1,10 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, HTMLAttributes } from "react";
 import * as S from "./style";
 
-type Props = {
+type Props = Pick<
+  HTMLAttributes<"div">,
+  "aria-label" | "aria-current" | "aria-selected"
+> & {
   open?: boolean;
   title: string;
   children: ReactNode | string;
@@ -17,6 +20,7 @@ export const Accordion = ({
   id,
   onClick,
   children,
+  ...ariaAttr
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const onTitleClick = () => {
@@ -31,6 +35,7 @@ export const Accordion = ({
       className={className}
       id={id}
       aria-expanded={open !== undefined ? open : isOpen}
+      {...ariaAttr}
     >
       <S.Title onClick={onTitleClick}>
         <span aria-label="accordion-title">{title}</span>

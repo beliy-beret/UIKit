@@ -2,8 +2,12 @@ import { Button } from "../Button";
 import { FormSuccess } from "./icons/FormSuccess";
 import { FormReject } from "./icons/FormReject";
 import * as S from "./style";
+import { HTMLAttributes } from "react";
 
-type Props = {
+type Props = Pick<
+  HTMLAttributes<"section">,
+  "aria-current" | "aria-label" | "aria-selected" | "className"
+> & {
   status: "success" | "reject";
   title?: string;
   description?: string;
@@ -15,6 +19,7 @@ export const FormSubmitNotification = ({
   status,
   description,
   onClose,
+  ...props
 }: Props) => {
   const sendToSupport = () => {
     const element = document.createElement("a");
@@ -31,7 +36,7 @@ export const FormSubmitNotification = ({
 
   if (status === "success") {
     return (
-      <S.Notification>
+      <S.Notification {...props}>
         <FormSuccess />
 
         <S.Title>{title || "Форма успешно отправлена!"}</S.Title>
@@ -48,7 +53,7 @@ export const FormSubmitNotification = ({
   }
 
   return (
-    <S.Notification>
+    <S.Notification {...props}>
       <FormReject />
 
       <S.Title>{title || "Обращение не было отправлено"}</S.Title>

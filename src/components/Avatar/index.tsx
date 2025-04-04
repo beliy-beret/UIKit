@@ -1,6 +1,10 @@
 import * as S from "./style";
+import { HTMLAttributes } from "react";
 
-type Props = {
+type Props = Pick<
+  HTMLAttributes<"div">,
+  "aria-label" | "aria-current" | "aria-selected"
+> & {
   className?: string;
   variant?: "Small" | "Medium" | "Large";
   imgSrc?: string;
@@ -12,9 +16,10 @@ export const Avatar = ({
   className = "",
   userInitials,
   imgSrc,
+  ...ariaAttr
 }: Props) => {
   return (
-    <S.Avatar $variant={variant} className={className}>
+    <S.Avatar $variant={variant} className={className} {...ariaAttr}>
       {imgSrc ? <img src={imgSrc} alt="" /> : <p>{userInitials}</p>}
     </S.Avatar>
   );

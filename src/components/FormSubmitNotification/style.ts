@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Colors } from "../colors";
 import { theme } from "../theme.ts";
 
-export const Notification = styled.div`
+export const Notification = styled.section`
   padding: 24px;
   border-radius: 12px;
   background-color: ${Colors.blueGray["10"]};
