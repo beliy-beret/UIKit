@@ -10,6 +10,7 @@ type Props1 = {
   disabled?: boolean;
   tabIndex?: number;
   size?: CheckBoxSizeType;
+  "aria-label"?: string;
 };
 
 type Props2 = {
@@ -21,6 +22,7 @@ type Props2 = {
   disabled?: boolean;
   tabIndex?: number;
   size?: CheckBoxSizeType;
+  "aria-label"?: string;
 };
 
 type Props = Props1 | Props2;
@@ -50,7 +52,7 @@ export const CheckBox = forwardRef<HTMLInputElement, Props>(
     };
 
     return (
-      <S.Wrapper>
+      <S.Wrapper aria-label={props["aria-label"]}>
         <input
           className="uikit-input"
           id={id}

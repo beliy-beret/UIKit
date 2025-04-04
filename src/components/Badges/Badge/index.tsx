@@ -1,9 +1,13 @@
-import { ComponentProps } from "react";
+import { HTMLAttributes } from "react";
 import { BadgeDesign } from "./types.ts";
 import { StyledBadge } from "./style";
 
-type Props = Pick<ComponentProps<"div">, "children" | "className"> & {
+type Props = Pick<
+  HTMLAttributes<"div">,
+  "aria-label" | "aria-current" | "aria-selected" | "children"
+> & {
   design?: BadgeDesign;
+  className?: string;
 };
 
 export const Badge = ({ children, design = "Body", ...props }: Props) => {

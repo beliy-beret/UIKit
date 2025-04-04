@@ -1,4 +1,4 @@
-import * as PortalsLogo from "./Logos";
-import * as Components from "./Portals";
-export declare const Portals: typeof Components;
-export declare const Logos: typeof PortalsLogo;
+import * as Logos from "./Logos";
+import * as MarchLogo from "./Logos/March";
+import * as Portals from "./Portals";
+export { Portals, Logos, MarchLogo };

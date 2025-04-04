@@ -1,26 +1,43 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, HTMLAttributes } from "react";
 import * as S from "./style";
 
-type Props = {
+type Props = Pick<
+  HTMLAttributes<"div">,
+  "aria-label" | "aria-current" | "aria-selected"
+> & {
   open?: boolean;
   title: string;
   children: ReactNode | string;
   className?: string;
   id?: string;
+  onClick?: () => void;
 };
 
 export const Accordion = ({
-  open = false,
+  open,
   title,
   className = "",
   id,
+  onClick,
   children,
+  ...ariaAttr
 }: Props) => {
-  const [isOpen, setIsOpen] = useState(open);
+  const [isOpen, setIsOpen] = useState(false);
+  const onTitleClick = () => {
+    if (onClick) {
+      return onClick();
+    }
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <S.Accordion className={className} id={id} aria-expanded={isOpen}>
-      <S.Title onClick={() => setIsOpen(!isOpen)}>
+    <S.Accordion
+      className={className}
+      id={id}
+      aria-expanded={open !== undefined ? open : isOpen}
+      {...ariaAttr}
+    >
+      <S.Title onClick={onTitleClick}>
         <span aria-label="accordion-title">{title}</span>
 
         <svg

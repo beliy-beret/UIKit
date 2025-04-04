@@ -4,9 +4,12 @@ import Link from "./images/share.svg";
 import * as S from "./styled";
 import { Button } from "../Button";
 import { ButtonVariant } from "../Button/types.ts";
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
-type Props = {
+type Props = Pick<
+  HTMLAttributes<"div">,
+  "aria-label" | "aria-current" | "aria-selected"
+> & {
   shareUrl: string;
   className?: string;
   variant?: ButtonVariant;
@@ -18,6 +21,7 @@ export const Share = ({
   icon,
   className = "",
   variant = "Text",
+  ...ariaAttr
 }: Props) => {
   const link = shareUrl.startsWith("http")
     ? shareUrl
@@ -34,7 +38,7 @@ export const Share = ({
   };
 
   return (
-    <S.Share className={className}>
+    <S.Share className={className} {...ariaAttr}>
       <S.Popup aria-label="share-tooltip">
         <button
           className="link"
