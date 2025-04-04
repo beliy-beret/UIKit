@@ -7,6 +7,7 @@ type Props1 = {
     disabled?: boolean;
     tabIndex?: number;
     size?: CheckBoxSizeType;
+    "aria-label"?: string;
 };
 type Props2 = {
     checked?: boolean;
@@ -17,6 +18,7 @@ type Props2 = {
     disabled?: boolean;
     tabIndex?: number;
     size?: CheckBoxSizeType;
+    "aria-label"?: string;
 };
 type Props = Props1 | Props2;
 export declare const CheckBox: import('../../../node_modules/react').ForwardRefExoticComponent<Props & import('../../../node_modules/react').RefAttributes<HTMLInputElement>>;

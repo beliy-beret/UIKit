@@ -1,5 +1,5 @@
-import { ReactNode } from '../../../node_modules/react';
-type Props = {
+import { ReactNode, HTMLAttributes } from '../../../node_modules/react';
+type Props = Pick<HTMLAttributes<"div">, "aria-label" | "aria-current" | "aria-selected"> & {
     open?: boolean;
     title: string;
     children: ReactNode | string;
@@ -7,5 +7,5 @@ type Props = {
     id?: string;
     onClick?: () => void;
 };
-export declare const Accordion: ({ open, title, className, id, onClick, children, }: Props) => import("react/jsx-runtime").JSX.Element;
+export declare const Accordion: ({ open, title, className, id, onClick, children, ...ariaAttr }: Props) => import("react/jsx-runtime").JSX.Element;
 export {};
