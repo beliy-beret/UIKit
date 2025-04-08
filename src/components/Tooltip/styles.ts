@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {
-  TOOLTIP_POSITION,
   TOOLTIP_TRIANGLE_POSITION,
   TOOLTIP_TRIANGLE_VARIANT,
   TOOLTIP_VARIANT,
@@ -10,17 +9,17 @@ import { theme } from "../theme.ts";
 
 export const Tooltip = styled.div<TooltipStyleProps>`
   box-sizing: border-box;
+  position: fixed;
+  z-index: 1000;
   width: 0;
   height: 0;
   opacity: 0;
   padding: 0;
   overflow: hidden;
   max-width: max-content;
-  position: absolute;
   border-radius: 8px;
   transition: opacity 300ms ease-in-out;
   ${theme.text.font12.medium};
-  ${({ $position }) => TOOLTIP_POSITION[$position]};
   ${({ $variant }) => TOOLTIP_VARIANT[$variant]};
 `;
 
@@ -43,7 +42,7 @@ export const Wrapper = styled.div<
     path {
       fill: ${({ $variant }) => TOOLTIP_TRIANGLE_VARIANT[$variant]};
     }
-    ${({ $position }) => TOOLTIP_TRIANGLE_POSITION[$position]};
+    ${({ $position }) => TOOLTIP_TRIANGLE_POSITION[$position!]};
   }
 
   &[aria-expanded="true"] {

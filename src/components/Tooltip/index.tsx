@@ -17,78 +17,137 @@ export const Tooltip = ({
     position || "TOP",
   );
 
-  const getTotalOffsetLeft = (element: any) => {
-    let offset = element.offsetLeft;
-
-    if (element.offsetParent && element.offsetParent !== document.body) {
-      offset += getTotalOffsetLeft(element.offsetParent);
-    }
-
-    return offset;
-  };
-
-  const getTotalOffsetTop = (element: any) => {
-    let offset = element.offsetTop;
-
-    if (element.offsetParent && element.offsetParent !== document.body) {
-      offset += getTotalOffsetTop(element.offsetParent);
-    }
-
-    return offset;
-  };
-
   const calculateTooltipPosition = (event: MouseEvent<HTMLDivElement>) => {
-    if (position) return;
+    const windowWidth = window.innerWidth;
+    const { left, top, right, bottom } =
+      event.currentTarget.getBoundingClientRect();
 
-    const tooltipWidth = tooltipRef.current?.clientWidth || 0;
-    const tooltipHeight = tooltipRef.current?.clientHeight || 0;
-    const containerWidth = event.currentTarget.clientWidth;
-    const containerHeight = event.currentTarget.clientHeight;
-    const widthDiff = Math.ceil((tooltipWidth - containerWidth) / 2);
-    const heightDiff = Math.ceil((tooltipHeight - containerHeight) / 2);
-    const spaceLeft = getTotalOffsetLeft(event.currentTarget);
-    const spaceRight = window.innerWidth - containerWidth - spaceLeft - 18;
-    const spaceTop = getTotalOffsetTop(event.currentTarget);
-    const spaceBottom =
-      window.innerHeight - event.currentTarget.offsetHeight - spaceTop;
+    if (tooltipRef.current) {
+      const tooltipWidth = tooltipRef.current.clientWidth;
+      const tooltipHeight = tooltipRef.current.clientHeight;
 
-    if (spaceTop > tooltipHeight + 16 && spaceLeft < widthDiff) {
-      return setTooltipPosition("TL");
-    }
-    if (spaceTop > tooltipHeight + 16 && spaceRight < widthDiff) {
-      return setTooltipPosition("TR");
-    }
-    if (spaceTop > tooltipHeight + 16) {
-      return setTooltipPosition("TOP");
-    }
+      if (position === "TL") {
+        tooltipRef.current.style.top = `${top - tooltipHeight - 12}px`;
+        tooltipRef.current.style.left = `${left}px`;
+        setTooltipPosition("TL");
+        return;
+      }
+      if (position === "TOP") {
+        tooltipRef.current.style.top = `${top - tooltipHeight - 12}px`;
+        tooltipRef.current.style.left = `${left - (tooltipWidth - event.currentTarget.clientWidth) / 2}px`;
+        setTooltipPosition("TOP");
+        return;
+      }
+      if (position === "TR") {
+        tooltipRef.current.style.top = `${top - tooltipHeight - 12}px`;
+        tooltipRef.current.style.left = `${right - tooltipWidth}px`;
+        setTooltipPosition("TR");
+        return;
+      }
+      if (position === "RT") {
+        tooltipRef.current.style.left = `${right + 12}px`;
+        tooltipRef.current.style.top = `${top}px`;
+        setTooltipPosition("RT");
+        return;
+      }
+      if (position === "RIGHT") {
+        tooltipRef.current.style.left = `${right + 12}px`;
+        tooltipRef.current.style.top = `${top - (tooltipHeight - event.currentTarget.clientHeight) / 2}px`;
+        setTooltipPosition("RIGHT");
+        return;
+      }
+      if (position === "RB") {
+        tooltipRef.current.style.left = `${right + 12}px`;
+        tooltipRef.current.style.top = `${bottom - tooltipHeight}px`;
+        setTooltipPosition("RB");
+        return;
+      }
+      if (position === "BR") {
+        tooltipRef.current.style.top = `${bottom + 12}px`;
+        tooltipRef.current.style.left = `${right - tooltipWidth}px`;
+        setTooltipPosition("BR");
+        return;
+      }
+      if (position === "BOTTOM") {
+        tooltipRef.current.style.top = `${bottom + 12}px`;
+        tooltipRef.current.style.left = `${left - (tooltipWidth - event.currentTarget.clientWidth) / 2}px`;
+        setTooltipPosition("BOTTOM");
+        return;
+      }
+      if (position === "BL") {
+        tooltipRef.current.style.top = `${bottom + 12}px`;
+        tooltipRef.current.style.left = `${left}px`;
+        setTooltipPosition("BL");
+        return;
+      }
+      if (position === "LT") {
+        tooltipRef.current.style.top = `${top}px`;
+        tooltipRef.current.style.left = `${left - tooltipWidth - 12}px`;
+        setTooltipPosition("LT");
+        return;
+      }
+      if (position === "LEFT") {
+        tooltipRef.current.style.top = `${top - (tooltipHeight - event.currentTarget.clientHeight) / 2}px`;
+        tooltipRef.current.style.left = `${left - tooltipWidth - 12}px`;
+        setTooltipPosition("LEFT");
+        return;
+      }
+      if (position === "LB") {
+        tooltipRef.current.style.top = `${bottom - tooltipHeight}px`;
+        tooltipRef.current.style.left = `${left - tooltipWidth - 12}px`;
+        setTooltipPosition("LB");
+        return;
+      }
 
-    if (spaceRight > tooltipWidth && spaceTop < heightDiff) {
-      return setTooltipPosition("RT");
-    }
-    if (spaceRight > tooltipWidth && spaceBottom < heightDiff) {
-      return setTooltipPosition("RB");
-    }
-    if (spaceRight > tooltipWidth) {
-      return setTooltipPosition("RIGHT");
-    }
+      if (top >= tooltipHeight + 12) {
+        tooltipRef.current.style.top = `${top - tooltipHeight - 12}px`;
 
-    if (spaceBottom > tooltipHeight + 16 && spaceLeft < widthDiff) {
-      return setTooltipPosition("BL");
-    }
-    if (spaceBottom > tooltipHeight + 16 && spaceRight < widthDiff) {
-      return setTooltipPosition("BR");
-    }
-    if (spaceBottom > tooltipHeight + 16) {
-      return setTooltipPosition("BR");
-    }
+        if (left <= (tooltipWidth - event.currentTarget.clientWidth) / 2) {
+          tooltipRef.current.style.left = `${left}px`;
+          setTooltipPosition("TL");
+          return;
+        }
 
-    if (spaceTop < heightDiff) {
-      return setTooltipPosition("LT");
+        if (
+          windowWidth - right <=
+          (tooltipWidth - event.currentTarget.clientWidth) / 2
+        ) {
+          tooltipRef.current.style.left = `${right - tooltipWidth}px`;
+          setTooltipPosition("TR");
+          return;
+        }
+
+        tooltipRef.current.style.left = `${left - (tooltipWidth - event.currentTarget.clientWidth) / 2}px`;
+        setTooltipPosition("TOP");
+        return;
+      }
+
+      if (windowWidth - right >= tooltipWidth + 12) {
+        tooltipRef.current.style.left = `${right + 12}px`;
+
+        if (top <= (tooltipHeight - event.currentTarget.clientHeight) / 2) {
+          tooltipRef.current.style.top = `${top}px`;
+          setTooltipPosition("RT");
+          return;
+        }
+
+        tooltipRef.current.style.top = `${top - (tooltipHeight - event.currentTarget.clientHeight) / 2}px`;
+        setTooltipPosition("RIGHT");
+        return;
+      }
+
+      tooltipRef.current.style.top = `${bottom + 12}px`;
+      if (
+        windowWidth - right <=
+        (tooltipWidth - event.currentTarget.clientWidth) / 2
+      ) {
+        tooltipRef.current.style.left = `${right - tooltipWidth}px`;
+        setTooltipPosition("BR");
+        return;
+      }
+      tooltipRef.current.style.left = `${left - (tooltipWidth - event.currentTarget.clientWidth) / 2}px`;
+      setTooltipPosition("BOTTOM");
     }
-    if (spaceBottom < heightDiff) {
-      return setTooltipPosition("LB");
-    }
-    setTooltipPosition("LEFT");
   };
 
   return (

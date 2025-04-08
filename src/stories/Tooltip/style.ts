@@ -41,7 +41,7 @@ export const AutoPositionWrapper = styled.div`
   height: 90vh;
   background-color: #c6c6c6;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
 
   .container {
@@ -53,15 +53,25 @@ export const AutoPositionWrapper = styled.div`
       grid-row: 1;
       place-self: start;
     }
-    &.tr {
+    &.top {
       grid-column: 2;
+      grid-row: 1;
+      place-self: start center;
+    }
+    &.tr {
+      grid-column: 3;
       grid-row: 1;
       place-self: start end;
     }
     &.br {
-      grid-column: 2;
+      grid-column: 3;
       grid-row: 2;
       place-self: end;
+    }
+    &.bottom {
+      grid-column: 2;
+      grid-row: 2;
+      place-self: end center;
     }
     &.bl {
       grid-column: 1;
