@@ -8,15 +8,18 @@ import {
 import { theme } from "../theme.ts";
 
 export const Tooltip = styled.div<TooltipStyleProps>`
-  display: none;
   box-sizing: border-box;
   position: fixed;
   z-index: 1000;
+  top: -100%;
+  left: 0;
+  opacity: 0;
   border-radius: 8px;
   width: fit-content;
   height: auto;
   padding: 8px 12px;
   max-width: ${({ $maxWidth }) => `${$maxWidth}px`};
+  transition: opacity 300ms ease-in-out;
 
   ${theme.text.font12.medium};
   ${({ $variant }) => TOOLTIP_VARIANT[$variant]};
@@ -32,6 +35,7 @@ export const Wrapper = styled.div<Omit<TooltipStyleProps, "$maxWidth">>`
     width: 0;
     height: 0;
     opacity: 0;
+    transition: opacity 300ms ease-in-out;
 
     path {
       fill: ${({ $variant }) => TOOLTIP_TRIANGLE_VARIANT[$variant]};
@@ -41,9 +45,8 @@ export const Wrapper = styled.div<Omit<TooltipStyleProps, "$maxWidth">>`
 
   &[aria-expanded="true"] {
     ${Tooltip} {
-      display: block;
+      opacity: 1;
     }
-
     svg.tooltip-triangle {
       width: 12px;
       height: 6px;

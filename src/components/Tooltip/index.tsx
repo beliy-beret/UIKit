@@ -25,7 +25,6 @@ export const Tooltip = ({
       event.currentTarget.getBoundingClientRect();
 
     if (tooltipRef.current) {
-      tooltipRef.current.style.display = "block";
       const tooltipWidth = tooltipRef.current.clientWidth;
       const tooltipHeight = tooltipRef.current.clientHeight;
 
@@ -33,84 +32,72 @@ export const Tooltip = ({
         tooltipRef.current.style.top = `${top - tooltipHeight - 12}px`;
         tooltipRef.current.style.left = `${left}px`;
         setTooltipPosition("TL");
-
         return;
       }
       if (position === "TOP") {
         tooltipRef.current.style.top = `${top - tooltipHeight - 12}px`;
         tooltipRef.current.style.left = `${left - (tooltipWidth - event.currentTarget.clientWidth) / 2}px`;
         setTooltipPosition("TOP");
-
         return;
       }
       if (position === "TR") {
         tooltipRef.current.style.top = `${top - tooltipHeight - 12}px`;
         tooltipRef.current.style.left = `${right - tooltipWidth}px`;
         setTooltipPosition("TR");
-
         return;
       }
       if (position === "RT") {
         tooltipRef.current.style.left = `${right + 12}px`;
         tooltipRef.current.style.top = `${top}px`;
         setTooltipPosition("RT");
-
         return;
       }
       if (position === "RIGHT") {
         tooltipRef.current.style.left = `${right + 12}px`;
         tooltipRef.current.style.top = `${top - (tooltipHeight - event.currentTarget.clientHeight) / 2}px`;
         setTooltipPosition("RIGHT");
-
         return;
       }
       if (position === "RB") {
         tooltipRef.current.style.left = `${right + 12}px`;
         tooltipRef.current.style.top = `${bottom - tooltipHeight}px`;
         setTooltipPosition("RB");
-
         return;
       }
       if (position === "BR") {
         tooltipRef.current.style.top = `${bottom + 12}px`;
         tooltipRef.current.style.left = `${right - tooltipWidth}px`;
         setTooltipPosition("BR");
-
         return;
       }
       if (position === "BOTTOM") {
         tooltipRef.current.style.top = `${bottom + 12}px`;
         tooltipRef.current.style.left = `${left - (tooltipWidth - event.currentTarget.clientWidth) / 2}px`;
         setTooltipPosition("BOTTOM");
-
         return;
       }
       if (position === "BL") {
         tooltipRef.current.style.top = `${bottom + 12}px`;
         tooltipRef.current.style.left = `${left}px`;
         setTooltipPosition("BL");
-
         return;
       }
       if (position === "LT") {
         tooltipRef.current.style.top = `${top}px`;
         tooltipRef.current.style.left = `${left - tooltipWidth - 12}px`;
         setTooltipPosition("LT");
-
         return;
       }
       if (position === "LEFT") {
         tooltipRef.current.style.top = `${top - (tooltipHeight - event.currentTarget.clientHeight) / 2}px`;
         tooltipRef.current.style.left = `${left - tooltipWidth - 12}px`;
         setTooltipPosition("LEFT");
-
         return;
       }
       if (position === "LB") {
         tooltipRef.current.style.top = `${bottom - tooltipHeight}px`;
         tooltipRef.current.style.left = `${left - tooltipWidth - 12}px`;
         setTooltipPosition("LB");
-
         return;
       }
 
@@ -120,7 +107,6 @@ export const Tooltip = ({
         if (left <= (tooltipWidth - event.currentTarget.clientWidth) / 2) {
           tooltipRef.current.style.left = `${left}px`;
           setTooltipPosition("TL");
-
           return;
         }
 
@@ -135,7 +121,6 @@ export const Tooltip = ({
 
         tooltipRef.current.style.left = `${left - (tooltipWidth - event.currentTarget.clientWidth) / 2}px`;
         setTooltipPosition("TOP");
-
         return;
       }
 
@@ -145,13 +130,11 @@ export const Tooltip = ({
         if (top <= (tooltipHeight - event.currentTarget.clientHeight) / 2) {
           tooltipRef.current.style.top = `${top}px`;
           setTooltipPosition("RT");
-
           return;
         }
 
         tooltipRef.current.style.top = `${top - (tooltipHeight - event.currentTarget.clientHeight) / 2}px`;
         setTooltipPosition("RIGHT");
-
         return;
       }
 
@@ -162,16 +145,16 @@ export const Tooltip = ({
       ) {
         tooltipRef.current.style.left = `${right - tooltipWidth}px`;
         setTooltipPosition("BR");
-
         return;
       }
       tooltipRef.current.style.left = `${left - (tooltipWidth - event.currentTarget.clientWidth) / 2}px`;
       setTooltipPosition("BOTTOM");
     }
   };
+
   const hideTooltip = () => {
     if (tooltipRef.current) {
-      tooltipRef.current.style.display = "none";
+      tooltipRef.current.style.top = "-100%";
       setIsShowTooltip(false);
     }
   };
