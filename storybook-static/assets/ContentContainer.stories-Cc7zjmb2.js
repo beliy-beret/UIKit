@@ -1,6 +1,7 @@
 import{j as i}from"./jsx-runtime-CkxqCPlQ.js";import{d as s}from"./styled-components.browser.esm-CW2lnlac.js";const m=s.div`
   padding-inline: 10px;
   margin-inline: auto;
+  width: 100%;
   max-width: 1366px;
 
   @media (min-width: 1280px) {
