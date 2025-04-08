@@ -19,9 +19,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const LightVariantTooltip: Story = {
-  args: {
-    width: 200,
-  },
   render: function Render(args) {
     return (
       <Wrapper>
@@ -79,7 +76,6 @@ export const LightVariantTooltip: Story = {
 export const DarkVariantTooltip: Story = {
   args: {
     variant: "DARK",
-    width: 200,
   },
   render: function Render(args) {
     return (
@@ -136,9 +132,6 @@ export const DarkVariantTooltip: Story = {
   },
 };
 export const AutoPositionTooltip: Story = {
-  args: {
-    width: 250,
-  },
   render: function Render(args) {
     return (
       <AutoPositionWrapper>

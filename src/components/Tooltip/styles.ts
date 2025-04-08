@@ -8,26 +8,21 @@ import {
 import { theme } from "../theme.ts";
 
 export const Tooltip = styled.div<TooltipStyleProps>`
+  display: none;
   box-sizing: border-box;
   position: fixed;
   z-index: 1000;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  padding: 0;
-  overflow: hidden;
-  max-width: max-content;
   border-radius: 8px;
-  transition: opacity 300ms ease-in-out;
+  width: fit-content;
+  height: auto;
+  padding: 8px 12px;
+  max-width: ${({ $maxWidth }) => `${$maxWidth}px`};
+
   ${theme.text.font12.medium};
   ${({ $variant }) => TOOLTIP_VARIANT[$variant]};
 `;
 
-export const Wrapper = styled.div<
-  TooltipStyleProps & {
-    $width: number | undefined;
-  }
->`
+export const Wrapper = styled.div<Omit<TooltipStyleProps, "$maxWidth">>`
   position: relative;
   width: fit-content;
   max-height: fit-content;
@@ -37,7 +32,6 @@ export const Wrapper = styled.div<
     width: 0;
     height: 0;
     opacity: 0;
-    transition: opacity 300ms ease-in-out;
 
     path {
       fill: ${({ $variant }) => TOOLTIP_TRIANGLE_VARIANT[$variant]};
@@ -47,29 +41,7 @@ export const Wrapper = styled.div<
 
   &[aria-expanded="true"] {
     ${Tooltip} {
-      padding: 8px 12px;
-      opacity: 1;
-      height: auto;
-      overflow: visible;
-      ${({ $width }) =>
-        $width ? `width: ${$width}px; max-width: unset` : "width: 100dvw;"}
-    }
-
-    svg.tooltip-triangle {
-      width: 12px;
-      height: 6px;
-      opacity: 1;
-    }
-  }
-
-  &:hover {
-    ${Tooltip} {
-      padding: 8px 12px;
-      opacity: 1;
-      height: auto;
-      overflow: visible;
-      ${({ $width }) =>
-        $width ? `width: ${$width}px; max-width: unset` : "width: 100dvw;"}
+      display: block;
     }
 
     svg.tooltip-triangle {

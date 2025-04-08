@@ -48,10 +48,11 @@ export type TooltipProps = {
   triangle?: boolean;
   position?: TooltipPosition;
   variant?: TooltipVariant;
-  width?: number;
+  maxWidth?: number;
 };
 
 export type TooltipStyleProps = {
   $position?: TooltipPosition;
   $variant: TooltipVariant;
+  $maxWidth: number;
 };
