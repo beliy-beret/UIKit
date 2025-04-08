@@ -11,7 +11,7 @@ export const Tooltip = styled.div<TooltipStyleProps>`
   box-sizing: border-box;
   position: fixed;
   z-index: 1000;
-  top: -100%;
+  top: -150%;
   left: 0;
   opacity: 0;
   border-radius: 8px;

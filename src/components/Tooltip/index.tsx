@@ -154,7 +154,7 @@ export const Tooltip = ({
 
   const hideTooltip = () => {
     if (tooltipRef.current) {
-      tooltipRef.current.style.top = "-100%";
+      tooltipRef.current.style.top = "-150%";
       setIsShowTooltip(false);
     }
   };
