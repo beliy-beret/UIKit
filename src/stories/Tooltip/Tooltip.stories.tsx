@@ -19,9 +19,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const LightVariantTooltip: Story = {
-  args: {
-    width: 200,
-  },
   render: function Render(args) {
     return (
       <Wrapper>
@@ -50,26 +47,26 @@ export const LightVariantTooltip: Story = {
         </div>
 
         <div className="bottom">
-          <Tooltip {...args} position="BR">
-            <Button variant="Secondary">BR</Button>
+          <Tooltip {...args} position="BL">
+            <Button variant="Secondary">BL</Button>
           </Tooltip>
           <Tooltip {...args} position="BOTTOM">
             <Button variant="Secondary">BOTTOM</Button>
           </Tooltip>
-          <Tooltip {...args} position="BL">
-            <Button variant="Secondary">BL</Button>
+          <Tooltip {...args} position="BR">
+            <Button variant="Secondary">BR</Button>
           </Tooltip>
         </div>
 
         <div className="left">
-          <Tooltip {...args} position="LB">
-            <Button variant="Secondary">LB</Button>
-          </Tooltip>
-          <Tooltip {...args} position="LEFT">
-            <Button variant="Secondary">RB</Button>
-          </Tooltip>
           <Tooltip {...args} position="LT">
             <Button variant="Secondary">LT</Button>
+          </Tooltip>
+          <Tooltip {...args} position="LEFT">
+            <Button variant="Secondary">LEFT</Button>
+          </Tooltip>
+          <Tooltip {...args} position="LB">
+            <Button variant="Secondary">LB</Button>
           </Tooltip>
         </div>
       </Wrapper>
@@ -79,7 +76,6 @@ export const LightVariantTooltip: Story = {
 export const DarkVariantTooltip: Story = {
   args: {
     variant: "DARK",
-    width: 200,
   },
   render: function Render(args) {
     return (
@@ -136,30 +132,64 @@ export const DarkVariantTooltip: Story = {
   },
 };
 export const AutoPositionTooltip: Story = {
-  args: {
-    width: 250,
-  },
   render: function Render(args) {
     return (
       <AutoPositionWrapper>
         <div className="container tl">
           <Tooltip {...args}>
-            <Button>Element</Button>
+            <Button>
+              Element <br />
+              Element <br />
+              Element <br />
+              Element <br />
+            </Button>
+          </Tooltip>
+        </div>
+        <div className="container top">
+          <Tooltip {...args}>
+            <Button>
+              Element <br />
+            </Button>
           </Tooltip>
         </div>
         <div className="container tr">
           <Tooltip {...args}>
-            <Button>Element</Button>
+            <Button>
+              Element <br />
+              Element <br />
+              Element <br />
+              Element <br />
+            </Button>
           </Tooltip>
         </div>
         <div className="container br">
           <Tooltip {...args}>
-            <Button>Element</Button>
+            <Button>
+              Element <br />
+              Element <br />
+              Element <br />
+              Element <br />
+            </Button>
+          </Tooltip>
+        </div>
+        <div className="container bottom">
+          <Tooltip {...args}>
+            <Button>
+              Element <br />
+              Element <br />
+              Element <br />
+              Element <br />
+            </Button>
           </Tooltip>
         </div>
         <div className="container bl">
           <Tooltip {...args}>
-            <Button>Element</Button>
+            <Button>
+              Element <br />
+              Element <br />
+              Element <br />
+              Element <br />
+            </Button>
           </Tooltip>
         </div>
       </AutoPositionWrapper>
